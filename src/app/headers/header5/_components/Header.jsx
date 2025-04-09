@@ -1,293 +1,230 @@
 "use client";
-
-import React, { useState, useEffect } from "react";
-import { Menu, X, Server, Zap, Grid, Network, Mail, Cpu, ChevronDown } from "lucide-react";
+import { useState, useEffect, useRef } from "react";
+import { ChevronDownIcon } from "@heroicons/react/20/solid";
+import Link from "next/link";
 
 const Header = () => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isScrolling, setIsScrolling] = useState(false);
-  const [openSubmenu, setOpenSubmenu] = useState(null); // Track which submenu is open
-  let scrollTimeout = null;
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [openMobileSubmenu, setOpenMobileSubmenu] = useState(null);
+  const headerRef = useRef(null);
+
+  const menuItems = [
+    { name: "Home", href: "#", submenus: [] },
+    { name: "Solutions", href: "#", submenus: [] },
+    {
+      name: "Products",
+      submenus: [
+        { name: "Software", href: "#" },
+        { name: "Hardware", href: "#" },
+        { name: "Services", href: "#" },
+        { name: "Bundles", href: "#" },
+      ],
+    },
+    {
+      name: "Resources",
+      submenus: [
+        { name: "Blog", href: "#" },
+        { name: "Guides", href: "#" },
+        { name: "Webinars", href: "#" },
+        { name: "Docs", href: "#" },
+      ],
+    },
+    {
+      name: "Company",
+      submenus: [
+        { name: "About Us", href: "#" },
+        { name: "Team", href: "#" },
+        { name: "Careers", href: "#" },
+        { name: "Contact", href: "#" },
+      ],
+    },
+    { name: "Support", href: "#", submenus: [] },
+    { name: "Pricing", href: "#", submenus: [] },
+  ];
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolling(true);
-      clearTimeout(scrollTimeout);
-      scrollTimeout = setTimeout(() => setIsScrolling(false), 200);
+      setIsScrolled(window.scrollY > 50);
     };
     window.addEventListener("scroll", handleScroll);
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-      clearTimeout(scrollTimeout);
-    };
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const toggleMenu = () => setIsMenuOpen((prev) => !prev);
-  const toggleSubmenu = (menu) => {
-    setOpenSubmenu(openSubmenu === menu ? null : menu);
-  };
-
-  const submenuItems = {
-    Systems: [
-      { name: "Nexus Core", icon: <Cpu className="w-5 h-5 text-blue-500" />, desc: "Central processing hub" },
-      { name: "Bolt Network", icon: <Zap className="w-5 h-5 text-blue-500" />, desc: "Lightning-fast connectivity" },
-      { name: "Neon Grid", icon: <Grid className="w-5 h-5 text-blue-500" />, desc: "Dynamic power distribution" },
-    ],
-    Network: [
-      { name: "Cyber Hub", icon: <Server className="w-5 h-5 text-blue-500" />, desc: "Secure server network" },
-      { name: "Data Stream", icon: <Zap className="w-5 h-5 text-blue-500" />, desc: "Real-time data flow" },
-    ],
+  const toggleMobileSubmenu = (menuName) => {
+    setOpenMobileSubmenu((prev) => (prev === menuName ? null : menuName));
   };
 
   return (
-    <>
-      {/* Menu Button */}
-      <div
-        className={`fixed top-4 right-4 z-50 transition-all duration-400 ease-[cubic-bezier(0.68,-0.55,0.27,1.55)] ${
-          isScrolling ? "opacity-0 scale-90 pointer-events-none" : "opacity-100 scale-100"
-        }`}
-      >
-        <button
-          onClick={toggleMenu}
-          className="relative w-10 h-10 flex items-center justify-center rounded-full bg-white shadow-[0_10px_35px_rgba(0,0,0,0.3)] group transition-all duration-500 ease-[cubic-bezier(0.4,0,0.2,1)] hover:bg-gray-100"
-          aria-label="Toggle menu"
+    <header
+      ref={headerRef}
+      className={`fixed w-full top-0 px-4 sm:px-6 lg:px-8 z-50 transition-all duration-700 ease-in-out ${
+        isScrolled
+          ? "bg-gradient-to-r from-teal-600/80 via-cyan-600/80 to-blue-600/80 backdrop-blur-md rounded-full shadow-[0_8px_32px_rgba(0,0,0,0.2)] mt-4"
+          : "bg-gradient-to-r from-teal-600 via-cyan-600 to-blue-600 shadow-md"
+      }`}
+    >
+      <nav className="max-w-7xl mx-auto">
+        <div className="flex items-center justify-between h-16 px-4">
+          <Link href="/" className="flex items-center space-x-2 group pointer-events-auto">
+            <div className="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center transform transition-all duration-500 group-hover:scale-110 group-hover:shadow-[0_0_20px_rgba(255,255,255,0.3)] group-hover:rotate-12">
+              <span className="text-white font-bold text-xl">M</span>
+            </div>
+            <span className="text-2xl font-extrabold text-white hidden sm:block transition-all duration-500 group-hover:text-white/90 group-hover:tracking-widest group-hover:scale-105">
+              MasterSite
+            </span>
+          </Link>
+
+          {/* Desktop Menu */}
+          <div className="hidden lg:flex items-center space-x-2">
+            {menuItems.map((menu) => (
+              <div key={menu.name} className="relative group">
+                {menu.submenus.length > 0 ? (
+                  // Menu with submenus
+                  <>
+                    <button className="px-5 py-2 text-white font-medium flex items-center relative z-20 transition-all duration-300 group-hover:text-white/90">
+                      <span>{menu.name}</span>
+                      <ChevronDownIcon className="w-4 h-4 ml-2 transform transition-all duration-300 group-hover:rotate-180" />
+                      <span className="absolute inset-0 bg-white/10 rounded-full scale-0 group-hover:scale-100 transition-transform duration-300 ease-out origin-center"></span>
+                    </button>
+                    <div className="absolute left-1/2 -translate-x-1/2 top-full mt-1 w-72 bg-white/95 backdrop-blur-md rounded-2xl shadow-[0_10px_30px_rgba(0,0,0,0.15)] opacity-0 invisible group-hover:opacity-100 group-hover:visible group-hover:translate-y-0 translate-y-2 scale-95 group-hover:scale-100 transition-all duration-300 ease-out z-10">
+                      <div className="p-4 space-y-2">
+                        {menu.submenus.map((item, index) => (
+                          <Link
+                            key={item.name}
+                            href={item.href}
+                            className={`block px-4 py-3 relative overflow-hidden group/item transition-all duration-300 hover:bg-gradient-to-r hover:from-teal-500/80 hover:to-blue-500/80 hover:text-white hover:pl-6 ${
+                              index === 0
+                                ? "rounded-t-xl"
+                                : index === menu.submenus.length - 1
+                                ? "rounded-b-xl"
+                                : ""
+                            }`}
+                          >
+                            <div className="font-semibold relative z-10 flex items-center">
+                              <span className="w-2 h-2 bg-teal-400 rounded-full mr-2 opacity-0 group-hover/item:opacity-100 transition-opacity duration-300"></span>
+                              {item.name}
+                            </div>
+                            <span className="absolute left-0 top-0 h-full w-1 bg-teal-400 transform scale-y-0 group-hover/item:scale-y-100 transition-transform duration-300 origin-bottom"></span>
+                          </Link>
+                        ))}
+                      </div>
+                    </div>
+                  </>
+                ) : (
+                  // Menu without submenus
+                  <Link
+                    href={menu.href}
+                    className="px-5 py-2 text-white font-medium flex items-center relative z-10 transition-all duration-300 group-hover:text-white/90"
+                  >
+                    <span>{menu.name}</span>
+                    <span className="absolute inset-0 bg-white/10 rounded-full scale-0 group-hover:scale-100 transition-transform duration-300 ease-out origin-center"></span>
+                  </Link>
+                )}
+              </div>
+            ))}
+          </div>
+
+          {/* Mobile Menu Button */}
+          <button
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            className="lg:hidden p-2 text-white relative group"
+          >
+            <svg
+              className="h-6 w-6 transition-all duration-500 group-hover:scale-125 group-hover:rotate-90"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              {isMobileMenuOpen ? (
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M6 18L18 6M6 6l12 12"
+                />
+              ) : (
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M4 6h16M4 12h16M4 18h16"
+                />
+              )}
+            </svg>
+            <span className="absolute inset-0 bg-white/10 rounded-full scale-0 group-hover:scale-100 transition-transform duration-500 ease-out origin-center"></span>
+          </button>
+        </div>
+
+        {/* Mobile Menu */}
+        <div
+          className={`lg:hidden fixed inset-0 bg-gradient-to-br from-teal-600/95 via-cyan-600/95 to-blue-600/95 transform transition-all duration-700 ease-in-out ${
+            isMobileMenuOpen ? "translate-y-0 opacity-100" : "translate-y-full opacity-0"
+          }`}
+          style={{ top: isScrolled ? "80px" : "64px" }}
         >
-          {isMenuOpen ? (
-            <X className="w-7 h-7 text-gray-900 transition-transform duration-400 ease-[cubic-bezier(0.68,-0.55,0.27,1.55)] rotate-90" />
-          ) : (
-            <Menu className="w-7 h-7 text-gray-900 transition-transform duration-400 ease-[cubic-bezier(0.68,-0.55,0.27,1.55)]" />
-          )}
-          <div className="absolute inset-0 rounded-full  opacity-0 group-hover:opacity-30 transition-opacity duration-500 blur-md scale-110" />
-        </button>
-      </div>
-
-      {/* Desktop Header (unchanged) */}
-      <header
-        className={`fixed top-0 left-0 w-full z-40 transition-all duration-700 ease-[cubic-bezier(0.87,0,0.13,1)] hidden sm:block ${
-          isMenuOpen
-            ? "translate-y-0 bg-white/95 backdrop-blur-2xl shadow-[0_20px_70px_rgba(0,0,0,0.3)]"
-            : "-translate-y-full"
-        }`}
-      >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-5">
-          <nav className="flex justify-center items-center gap-12">
-            <div className="flex gap-16 items-center text-lg font-semibold text-gray-900">
-              <div className="group relative">
-                <span className="cursor-pointer hover:text-blue-500 transition-all duration-300 flex items-center gap-3">
-                  <Cpu className="w-6 h-6 group-hover:text-blue-500 transition-colors duration-300" />
-                  Systems
-                </span>
-                <div className="absolute left-1/2 -translate-x-1/2 top-full mt-4 bg-white rounded-xl border border-gray-200/50 shadow-[0_15px_40px_rgba(0,0,0,0.15)] p-6 opacity-0 group-hover:opacity-100 scale-95 group-hover:scale-100 transition-all duration-400 ease-[cubic-bezier(0.68,-0.55,0.27,1.55)] pointer-events-none group-hover:pointer-events-auto w-[320px]">
-                  <ul className="space-y-4">
-                    {submenuItems.Systems.map((item) => (
-                      <li key={item.name}>
-                        <a
-                          href="#"
-                          className="flex items-center gap-4 p-3 rounded-lg hover:bg-gray-50 transition-all duration-300 group/item relative overflow-hidden"
+          <div className="flex flex-col h-full justify-center items-center space-y-6 px-4">
+            {menuItems.map((menu) => (
+              <div key={menu.name} className="w-full max-w-sm">
+                {menu.submenus.length > 0 ? (
+                  <>
+                    <button
+                      onClick={() => toggleMobileSubmenu(menu.name)}
+                      className="text-2xl text-white font-medium w-full flex justify-center items-center relative group"
+                    >
+                      <span className="relative z-10 transition-all duration-500 group-hover:scale-110 group-hover:text-white/80">
+                        {menu.name}
+                      </span>
+                      <ChevronDownIcon
+                        className={`w-6 h-6 ml-3 transform transition-all duration-500 ${
+                          openMobileSubmenu === menu.name ? "rotate-180 scale-110" : ""
+                        }`}
+                      />
+                      <span className="absolute inset-0 bg-white/10 rounded-full scale-0 group-hover:scale-100 transition-transform duration-500 ease-out origin-center"></span>
+                    </button>
+                    <div
+                      className={`mt-4 space-y-3 transition-all duration-700 ease-in-out overflow-hidden ${
+                        openMobileSubmenu === menu.name
+                          ? "max-h-[400px] opacity-100"
+                          : "max-h-0 opacity-0"
+                      }`}
+                    >
+                      {menu.submenus.map((item) => (
+                        <Link
+                          key={item.name}
+                          href={item.href}
+                          className="block text-center text-lg text-white/80 relative group py-2"
+                          onClick={() => {
+                            setIsMobileMenuOpen(false);
+                            setOpenMobileSubmenu(null);
+                          }}
                         >
-                          <div className="absolute inset-0  opacity-0 group-hover/item:opacity-20 transition-opacity duration-300" />
-                          {item.icon}
-                          <div>
-                            <span className="block text-sm font-medium text-gray-900 group-hover/item:text-blue-500 transition-colors duration-300">
-                              {item.name}
-                            </span>
-                            <span className="text-xs text-gray-500">{item.desc}</span>
-                          </div>
-                        </a>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
+                          <span className="relative z-10 transition-all duration-500 group-hover:scale-110 group-hover:text-white">
+                            {item.name}
+                          </span>
+                          <span className="absolute inset-0 bg-white/10 rounded-full scale-0 group-hover:scale-100 transition-transform duration-500 ease-out origin-center"></span>
+                        </Link>
+                      ))}
+                    </div>
+                  </>
+                ) : (
+                  <Link
+                    href={menu.href}
+                    className="text-2xl text-white font-medium w-full flex justify-center items-center relative group"
+                    onClick={() => setIsMobileMenuOpen(false)}
+                  >
+                    <span className="relative z-10 transition-all duration-500 group-hover:scale-110 group-hover:text-white/80">
+                      {menu.name}
+                    </span>
+                    <span className="absolute inset-0 bg-white/10 rounded-full scale-0 group-hover:scale-100 transition-transform duration-500 ease-out origin-center"></span>
+                  </Link>
+                )}
               </div>
-              <div className="group relative">
-                <span className="cursor-pointer hover:text-blue-500 transition-all duration-300 flex items-center gap-3">
-                  <Network className="w-6 h-6 group-hover:text-blue-500 transition-colors duration-300" />
-                  Network
-                </span>
-                <div className="absolute left-1/2 -translate-x-1/2 top-full mt-4 bg-white rounded-xl border border-gray-200/50 shadow-[0_15px_40px_rgba(0,0,0,0.15)] p-6 opacity-0 group-hover:opacity-100 scale-95 group-hover:scale-100 transition-all duration-400 ease-[cubic-bezier(0.68,-0.55,0.27,1.55)] pointer-events-none group-hover:pointer-events-auto w-[320px]">
-                  <ul className="space-y-4">
-                    {submenuItems.Network.map((item) => (
-                      <li key={item.name}>
-                        <a
-                          href="#"
-                          className="flex items-center gap-4 p-3 rounded-lg hover:bg-gray-50 transition-all duration-300 group/item relative overflow-hidden"
-                        >
-                          <div className="absolute inset-0  opacity-0 group-hover/item:opacity-20 transition-opacity duration-300" />
-                          {item.icon}
-                          <div>
-                            <span className="block text-sm font-medium text-gray-900 group-hover/item:text-blue-500 transition-colors duration-300">
-                              {item.name}
-                            </span>
-                            <span className="text-xs text-gray-500">{item.desc}</span>
-                          </div>
-                        </a>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </div>
-              <a
-                href="#"
-                className="hover:text-blue-500 transition-all duration-300 flex items-center gap-3"
-              >
-                <Mail className="w-6 h-6 group-hover:text-blue-500 transition-colors duration-300" />
-                Contact
-              </a>
-            </div>
-          </nav>
+            ))}
+          </div>
         </div>
-      </header>
-
-      {/* Mobile Header */}
-      <header
-        className={`fixed top-0 left-0 w-full z-40 transition-all duration-700 ease-[cubic-bezier(0.87,0,0.13,1)] sm:hidden ${
-          isMenuOpen
-            ? "translate-y-0 bg-white/95 backdrop-blur-2xl shadow-[0_20px_70px_rgba(0,0,0,0.3)] min-h-screen"
-            : "-translate-y-full"
-        }`}
-      >
-        <div className="max-w-7xl mx-auto px-4 py-5 pt-16">
-          <nav className="flex flex-col items-center gap-8">
-            <div className="flex flex-col gap-8 w-full text-lg font-semibold text-gray-900">
-              {/* Systems Mobile Menu */}
-              <div className="group">
-                <button
-                  onClick={() => toggleSubmenu("Systems")}
-                  className="cursor-pointer hover:text-blue-500 transition-all duration-300 flex items-center justify-between gap-3 py-2 border-b border-gray-200 w-full"
-                >
-                  <div className="flex items-center gap-3">
-                    <Cpu className="w-6 h-6 group-hover:text-blue-500 transition-colors duration-300" />
-                    Systems
-                  </div>
-                  <ChevronDown
-                    className={`w-5 h-5 text-gray-600 transition-transform duration-300 ${
-                      openSubmenu === "Systems" ? "rotate-180" : ""
-                    }`}
-                  />
-                </button>
-                <div
-                  className={`mt-4 bg-white rounded-xl border border-gray-200/50 shadow-[0_10px_30px_rgba(0,0,0,0.1)] p-4 transition-all duration-300 ${
-                    openSubmenu === "Systems" && isMenuOpen ? "block opacity-100" : "hidden opacity-0"
-                  }`}
-                >
-                  <ul className="space-y-4">
-                    {submenuItems.Systems.map((item) => (
-                      <li key={item.name}>
-                        <a
-                          href="#"
-                          className="flex items-center gap-4 p-2 rounded-lg hover:bg-gray-50 transition-all duration-300 group/item relative overflow-hidden"
-                          onClick={() => setIsMenuOpen(false)} // Close menu on item click
-                        >
-                          <div className="absolute inset-0  opacity-0 group-hover/item:opacity-20 transition-opacity duration-300" />
-                          {item.icon}
-                          <div>
-                            <span className="block text-sm font-medium text-gray-900 group-hover/item:text-blue-500 transition-colors duration-300">
-                              {item.name}
-                            </span>
-                            <span className="text-xs text-gray-500">{item.desc}</span>
-                          </div>
-                        </a>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </div>
-
-              {/* Network Mobile Menu */}
-              <div className="group">
-                <button
-                  onClick={() => toggleSubmenu("Network")}
-                  className="cursor-pointer hover:text-blue-500 transition-all duration-300 flex items-center justify-between gap-3 py-2 border-b border-gray-200 w-full"
-                >
-                  <div className="flex items-center gap-3">
-                    <Network className="w-6 h-6 group-hover:text-blue-500 transition-colors duration-300" />
-                    Network
-                  </div>
-                  <ChevronDown
-                    className={`w-5 h-5 text-gray-600 transition-transform duration-300 ${
-                      openSubmenu === "Network" ? "rotate-180" : ""
-                    }`}
-                  />
-                </button>
-                <div
-                  className={`mt-4 bg-white rounded-xl border border-gray-200/50 shadow-[0_10px_30px_rgba(0,0,0,0.1)] p-4 transition-all duration-300 ${
-                    openSubmenu === "Network" && isMenuOpen ? "block opacity-100" : "hidden opacity-0"
-                  }`}
-                >
-                  <ul className="space-y-4">
-                    {submenuItems.Network.map((item) => (
-                      <li key={item.name}>
-                        <a
-                          href="#"
-                          className="flex items-center gap-4 p-2 rounded-lg hover:bg-gray-50 transition-all duration-300 group/item relative overflow-hidden"
-                          onClick={() => setIsMenuOpen(false)} // Close menu on item click
-                        >
-                          <div className="absolute inset-0  opacity-0 group-hover/item:opacity-20 transition-opacity duration-300" />
-                          {item.icon}
-                          <div>
-                            <span className="block text-sm font-medium text-gray-900 group-hover/item:text-blue-500 transition-colors duration-300">
-                              {item.name}
-                            </span>
-                            <span className="text-xs text-gray-500">{item.desc}</span>
-                          </div>
-                        </a>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </div>
-
-              {/* Contact Mobile Link */}
-              <a
-                href="#"
-                className="hover:text-blue-500 transition-all duration-300 flex items-center gap-3 py-2 border-b border-gray-200 w-full"
-                onClick={() => setIsMenuOpen(false)} // Close menu on click
-              >
-                <Mail className="w-6 h-6 group-hover:text-blue-500 transition-colors duration-300" />
-                Contact
-              </a>
-            </div>
-          </nav>
-        </div>
-      </header>
-
-      <style jsx>{`
-        @keyframes fade-slide {
-          from {
-            opacity: 0;
-            transform: translateY(-15px) scale(0.95);
-          }
-          to {
-            opacity: 1;
-            transform: translateY(0) scale(1);
-          }
-        }
-        .group:hover .opacity-0 {
-          animation: fade-slide 0.4s ease-out forwards;
-        }
-
-        /* Responsive Adjustments */
-        @media (max-width: 640px) {
-          .min-h-screen {
-            min-height: 100vh;
-          }
-          .text-lg {
-            font-size: 1.25rem; /* 20px */
-          }
-          .text-sm {
-            font-size: 1rem; /* 16px */
-          }
-          .w-6 {
-            width: 1.75rem; /* 28px */
-            height: 1.75rem;
-          }
-          .w-5 {
-            width: 1.5rem; /* 24px */
-            height: 1.5rem;
-          }
-        }
-      `}</style>
-    </>
+      </nav>
+    </header>
   );
 };
 

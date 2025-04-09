@@ -51,6 +51,61 @@ const NavBars = () => {
       name: "Navigation Bar - 9",
       path: "/headers/header9",
     },
+    {
+      id: 10,
+      name: "Navigation Bar - 10",
+      path: "/headers/header10",
+    },
+    {
+      id: 11,
+      name: "Navigation Bar - 11",
+      path: "/headers/header11",
+    },
+    {
+      id: 12,
+      name: "Navigation Bar - 12",
+      path: "/headers/header12",
+    },
+    {
+      id: 13,
+      name: "Navigation Bar - 13",
+      path: "/headers/header13",
+    },
+    {
+      id: 14,
+      name: "Navigation Bar - 14",
+      path: "/headers/header14",
+    },
+    {
+      id: 15,
+      name: "Navigation Bar - 15",
+      path: "/headers/header15",
+    },
+    {
+      id: 16,
+      name: "Navigation Bar - 16",
+      path: "/headers/header16",
+    },
+    {
+      id: 17,
+      name: "Navigation Bar - 17",
+      path: "/headers/header17",
+    },
+    {
+      id: 18,
+      name: "Navigation Bar - 18",
+      path: "/headers/header18",
+    },
+    {
+      id: 19,
+      name: "Navigation Bar - 19",
+      path: "/headers/header19",
+    },
+    {
+      id: 20,
+      name: "Navigation Bar - 20",
+      path: "/headers/header20",
+    },
   ];
 
   return (
