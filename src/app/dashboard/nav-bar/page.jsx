@@ -106,6 +106,31 @@ const NavBars = () => {
       name: "Navigation Bar - 20",
       path: "/headers/header20",
     },
+    {
+      id: 21,
+      name: "Navigation Bar - 21",
+      path: "/headers/header21",
+    },
+    {
+      id: 22,
+      name: "Navigation Bar - 22",
+      path: "/headers/header22",
+    },
+    {
+      id: 23,
+      name: "Navigation Bar - 23",
+      path: "/headers/header23",
+    },
+    {
+      id: 24,
+      name: "Navigation Bar - 24",
+      path: "/headers/header24",
+    },
+    {
+      id: 25,
+      name: "Navigation Bar - 25",
+      path: "/headers/header25",
+    },
   ];
 
   return (

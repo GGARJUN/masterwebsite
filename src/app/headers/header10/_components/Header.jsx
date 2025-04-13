@@ -1,278 +1,425 @@
 "use client";
-import React, { useEffect, useRef, useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
-import { ChevronDown, ChevronUp, Menu, X } from "lucide-react";
 
 const Header = () => {
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [openDropdown, setOpenDropdown] = useState(null);
-  const [isContactVisible, setIsContactVisible] = useState(true);
-  const lastScrollY = useRef(0);
-  const dropdownTimeout = useRef(null); // Ref to store timeout for submenu auto-close
-  const hoverTimeout = useRef(null); // Ref to store hover timeout for mouse leave
-
-  const toggleDropdown = (itemName) => {
-    if (dropdownTimeout.current) {
-      clearTimeout(dropdownTimeout.current); // Clear any existing timeout
-    }
-    if (hoverTimeout.current) {
-      clearTimeout(hoverTimeout.current); // Clear any existing hover timeout
-    }
-    setOpenDropdown(openDropdown === itemName ? null : itemName);
-  };
-
-  const handleMouseEnter = (itemName) => {
-    if (hoverTimeout.current) {
-      clearTimeout(hoverTimeout.current); // Clear any existing hover timeout
-    }
-    if (openDropdown !== itemName) {
-      setOpenDropdown(itemName);
-    }
-  };
-
-  const handleMouseLeave = (itemName) => {
-    if (hoverTimeout.current) {
-      clearTimeout(hoverTimeout.current); // Clear any existing hover timeout
-    }
-    hoverTimeout.current = setTimeout(() => {
-      if (openDropdown === itemName) {
-        setOpenDropdown(null);
-      }
-    }, 200); // 2-second delay before closing
-  };
-
-  const toggleMobileMenu = () => {
-    setIsMobileMenuOpen(!isMobileMenuOpen);
-  };
-
-  // Handle scroll to hide/show contact bar
-  useEffect(() => {
-    const handleScroll = () => {
-      const currentScrollY = window.scrollY;
-      if (currentScrollY > lastScrollY.current) {
-        setIsContactVisible(false); // Hide on scroll down
-      } else {
-        setIsContactVisible(true); // Show on scroll up
-      }
-      lastScrollY.current = currentScrollY;
-    };
-
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [activeMenu, setActiveMenu] = useState(null);
+  const [hoveredItem, setHoveredItem] = useState(null);
+  const [mobileOpen, setMobileOpen] = useState(false);
+  const [cursorPos, setCursorPos] = useState({ x: 0, y: 0 });
+  const [ripple, setRipple] = useState(null);
 
   const navItems = [
     { name: "Home", href: "/" },
     {
-      name: "Tools",
-      href: "/tools",
+      name: "Products",
+      href: "#",
       subItems: [
-        { name: "Inner Pages", href: "/tools/inner-pages" },
-        { name: "Style Guide", href: "/tools/style-guide", hot: true },
-        { name: "Blog", href: "/tools/blog" },
-        { name: "Blog Details", href: "/tools/blog-details" },
-        { name: "Pricing", href: "/tools/pricing" },
-        { name: "Contact", href: "/tools/contact" },
-        { name: "Sign In", href: "/tools/sign-in" },
-        { name: "Sign Up", href: "/tools/sign-up" },
-        { name: "Team", href: "/tools/team" },
-        { name: "Terms & Policy", href: "/tools/terms" },
-        { name: "Privacy Policy", href: "/tools/privacy" },
+        { name: "All Products", href: "/products" },
+        { name: "New Arrivals", href: "/products/new" },
+        { name: "Best Sellers", href: "/products/bestsellers" },
       ],
     },
     {
-      name: "Pages",
-      href: "/pages",
+      name: "Solutions",
+      href: "#",
       subItems: [
-        { name: "Dashboard", href: "/pages/dashboard" },
-        { name: "Profile", href: "/pages/profile" },
-        { name: "Notification", href: "/pages/notification" },
-        { name: "Chat Export", href: "/pages/chat-export" },
-        { name: "Appearance", href: "/pages/appearance" },
-        { name: "Plans and Billing", href: "/pages/plans" },
-        { name: "Sessions", href: "/pages/sessions" },
-        { name: "Application", href: "/pages/application" },
-        { name: "Release Notes", href: "/pages/release-notes" },
-        { name: "Help & FAQs", href: "/pages/help" },
+        { name: "Marketing", href: "/solutions/marketing" },
+        { name: "Analytics", href: "/solutions/analytics" },
+        { name: "Commerce", href: "/solutions/commerce" },
       ],
     },
-    { name: "Roadmap", href: "/roadmap" },
-    { name: "How to use", href: "/how-to-use" },
+    { name: "Resources", href: "/resources" },
+    { name: "Contact", href: "/contact" },
   ];
 
+  // Track cursor position and handle ripple effect
+  useEffect(() => {
+    const handleMouseMove = (e) => {
+      setCursorPos({ x: e.clientX, y: e.clientY });
+    };
+    const handleClick = (e) => {
+      setRipple({ x: e.clientX, y: e.clientY, id: Date.now() });
+      setTimeout(() => setRipple(null), 600); // Ripple duration
+    };
+    window.addEventListener("mousemove", handleMouseMove);
+    window.addEventListener("click", handleClick);
+    return () => {
+      window.removeEventListener("mousemove", handleMouseMove);
+      window.removeEventListener("click", handleClick);
+    };
+  }, []);
+
+  // Scroll effect
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 20);
+    };
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  // Custom cursor and ripple effect
+  const CursorEffect = () => (
+    <div
+      className="fixed pointer-events-none z-50 transition-transform duration-150 ease-out"
+      style={{
+        left: `${cursorPos.x}px`,
+        top: `${cursorPos.y}px`,
+        transform: `translate(-50%, -50%) scale(${hoveredItem ? 1.8 : 1})`,
+      }}
+    >
+      <div
+        className={`w-5 h-5 rounded-full border transition-all duration-300 ${
+          hoveredItem
+            ? "border-purple-400 bg-purple-400/20"
+            : "border-blue-400/50 bg-blue-400/10"
+        }`}
+      />
+      {ripple && (
+        <div
+          className="absolute w-20 h-20 rounded-full bg-gradient-to-r from-purple-400/30 to-blue-400/30 animate-ripple"
+          style={{
+            left: `${ripple.x - cursorPos.x}px`,
+            top: `${ripple.y - cursorPos.y}px`,
+            transform: "translate(-50%, -50%)",
+          }}
+        />
+      )}
+    </div>
+  );
+
   return (
-    <header className="text-white sticky top-0 z-50">
-      <nav
-        className={`px-4 sm:px-6 lg:px-8 py-3 transition-all duration-700 ease-in-out ${
-          isContactVisible ? "" : "bg-gradient-to-r from-gray-900 via-gray-800 to-gray-900"
+    <>
+      <CursorEffect />
+
+      <header
+        className={`fixed w-full top-0 z-40 transition-all duration-600 ease-in-out ${
+          isScrolled
+            ? "bg-gradient-to-r from-gray-900/90 via-purple-900/90 to-blue-900/90 backdrop-blur-xl shadow-[0_4px_30px_rgba(0,0,0,0.2)] py-2"
+            : "bg-transparent py-4"
         }`}
       >
-        <div className="flex justify-between items-center">
-          {/* Logo/Brand */}
-          <div className="flex items-center space-x-2">
-            <Link href="/" className="flex items-center space-x-2 group">
-              <div className="w-10 h-10 bg-gradient-to-br from-indigo-600 to-cyan-400 rounded-lg flex items-center justify-center transform transition-all duration-500 ease-out group-hover:scale-110">
-                <span className="text-white font-bold text-xl">M</span>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex justify-between items-center">
+            {/* Logo with Pulsating Effect */}
+            <Link
+              href="/"
+              className="relative group"
+              onMouseEnter={() => setHoveredItem("logo")}
+              onMouseLeave={() => setHoveredItem(null)}
+            >
+              <div className="flex items-center space-x-3">
+                <div className="relative w-12 h-12">
+                  <div
+                    className={`absolute inset-0 rounded-xl bg-gradient-to-br from-purple-500 to-blue-500 transform group-hover:scale-110 group-hover:rotate-6 transition-all duration-500 animate-pulse-slow ${
+                      isScrolled ? "opacity-80" : "opacity-100"
+                    }`}
+                  />
+                  <span className="absolute inset-0 flex items-center justify-center text-white font-extrabold text-2xl">
+                    U
+                  </span>
+                  <div
+                    className="absolute inset-0 rounded-xl shadow-[0_0_20px_rgba(168,85,247,0.5)] opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+                  />
+                </div>
+                <span
+                  className={`text-2xl font-extrabold tracking-tight bg-clip-text text-transparent transition-all duration-500 group-hover:scale-105 ${
+                    isScrolled
+                      ? "bg-gradient-to-r from-gray-100 to-purple-300"
+                      : "bg-gradient-to-r from-white to-blue-300"
+                  }`}
+                >
+                  Ultra
+                </span>
               </div>
-              <span className="text-xl font-bold text-cyan-300 transition-all duration-500 ease-out group-hover:text-cyan-200">
-                Master Site
-              </span>
             </Link>
-          </div>
 
-          {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-6 border-2 bg-gradient-to-r from-gray-900 via-gray-800 to-gray-900 px-5 py-2 rounded-full">
-            {navItems.map((item) => (
-              <div
-                key={item.name}
-                className="relative group"
-                onMouseEnter={() => handleMouseEnter(item.name)}
-                onMouseLeave={() => handleMouseLeave(item.name)}
-              >
-                {item.subItems ? (
-                  <>
-                    <button
-                      onClick={() => toggleDropdown(item.name)}
-                      className="flex items-center text-gray-300 hover:text-white px-4 py-2 text-sm font-medium rounded-md hover:bg-gray-700/50 transition-all duration-500 ease-in-out hover:shadow-md"
+            {/* Desktop Navigation */}
+            <nav className="hidden md:flex items-center space-x-2">
+              {navItems.map((item, index) => (
+                <div
+                  key={item.name}
+                  className="relative group"
+                  onMouseEnter={() => {
+                    setActiveMenu(item.name);
+                    setHoveredItem(item.name);
+                  }}
+                  onMouseLeave={() => {
+                    setActiveMenu(null);
+                    setHoveredItem(null);
+                  }}
+                >
+                  <Link
+                    href={item.href}
+                    className={`px-4 py-3 text-sm font-semibold relative overflow-hidden transition-all duration-500 transform group-hover:-translate-y-1 ${
+                      isScrolled ? "text-gray-100" : "text-white"
+                    } animate-menu-reveal`}
+                    style={{
+                      animationDelay: `${index * 0.1}s`,
+                      transformStyle: "preserve-3d",
+                      perspective: "1000px",
+                    }}
+                  >
+                    <span
+                      className="relative z-10"
+                      style={{ transform: "translateZ(10px)" }}
                     >
                       {item.name}
-                      {openDropdown === item.name || (item.name === openDropdown && item.subItems) ? (
-                        <ChevronUp className="ml-1 h-4 w-4 transition-transform duration-500 ease-in-out" />
-                      ) : (
-                        <ChevronDown className="ml-1 h-4 w-4 transition-transform duration-500 ease-in-out" />
-                      )}
-                      {item.subItems.some((sub) => sub.hot) && (
-                        <span className="ml-2 inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium bg-purple-600 text-white">
-                          Hot
-                        </span>
-                      )}
-                    </button>
-                    {(openDropdown === item.name || (item.name === openDropdown && item.subItems)) && (
-                      <div className="absolute left-0 mt-2 w-64 bg-gray-800/90 backdrop-blur-md rounded-md shadow-lg py-2 z-50 transition-all duration-700 ease-in-out opacity-100 scale-100">
+                    </span>
+                    {/* Neon underline effect */}
+                    <span
+                      className={`absolute bottom-0 left-0 h-0.5 bg-gradient-to-r from-purple-400 to-blue-400 transition-all duration-500 ${
+                        activeMenu === item.name ? "w-full" : "w-0"
+                      }`}
+                    />
+                    {/* Glow effect */}
+                    <span
+                      className={`absolute inset-0 rounded-full shadow-[0_0_15px_rgba(168,85,247,0.3)] opacity-0 group-hover:opacity-100 transition-opacity duration-500`}
+                      style={{ transform: "translateZ(-5px)" }}
+                    />
+                  </Link>
+
+                  {/* Submenu with Parallax Cards */}
+                  {item.subItems && (
+                    <div
+                      className={`absolute left-1/2 -translate-x-1/2 top-full mt-3 w-72 bg-gradient-to-br from-gray-900/95 via-purple-900/95 to-blue-900/95 backdrop-blur-lg rounded-2xl shadow-[0_8px_40px_rgba(0,0,0,0.3)] overflow-hidden transition-all duration-400 origin-top ${
+                        activeMenu === item.name
+                          ? "opacity-100 scale-100 translate-y-0"
+                          : "opacity-0 scale-95 translate-y-4 pointer-events-none"
+                      }`}
+                    >
+                      <div className="p-4 space-y-3">
                         {item.subItems.map((subItem) => (
                           <Link
                             key={subItem.name}
                             href={subItem.href}
-                            className="block px-4 py-2 text-sm text-gray-300 hover:bg-gray-700 hover:text-white rounded-md transition-all duration-500 ease-in-out hover:shadow-inner"
-                            onClick={() => {
-                              setOpenDropdown(null);
-                              if (hoverTimeout.current) clearTimeout(hoverTimeout.current);
-                            }}
+                            className="block px-4 py-3 text-sm text-white font-medium relative group/sub rounded-xl overflow-hidden transition-all duration-300 hover:bg-white/10"
+                            onClick={() => setMobileOpen(false)}
                           >
-                            {subItem.name}
-                            {subItem.hot && (
-                              <span className="ml-2 inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium bg-purple-600 text-white">
-                                Hot
-                              </span>
-                            )}
+                            <span className="relative z-10">{subItem.name}</span>
+                            {/* Gradient border effect */}
+                            <span
+                              className="absolute inset-0 border-2 border-transparent group-hover/sub:border-gradient-to-r group-hover/sub:from-purple-400 group-hover/sub:to-blue-400 rounded-xl transition-all duration-500"
+                              style={{
+                                background:
+                                  "linear-gradient(45deg, rgba(168,85,247,0.2), rgba(59,130,246,0.2))",
+                                transform: "translateZ(-10px)",
+                              }}
+                            />
+                            {/* Parallax tilt */}
+                            <span
+                              className="absolute inset-0 bg-gradient-to-r from-purple-400/10 to-blue-400/10 rounded-xl transform transition-transform duration-300 group-hover/sub:-rotate-2 group-hover/sub:scale-105"
+                            />
                           </Link>
                         ))}
                       </div>
-                    )}
-                  </>
-                ) : (
-                  <Link
-                    href={item.href}
-                    className="text-gray-300 hover:text-white px-4 py-2 text-sm font-medium rounded-md hover:bg-gray-700/50 transition-all duration-500 ease-in-out hover:shadow-md"
-                  >
-                    {item.name}
-                  </Link>
-                )}
-              </div>
-            ))}
-          </div>
+                    </div>
+                  )}
+                </div>
+              ))}
+            </nav>
 
-          {/* Right Button */}
-          <div className="hidden md:block">
-            <Link
-              href="/get-start"
-              className="bg-indigo-600 text-white font-semibold px-6 py-2 rounded-lg hover:bg-indigo-700 transition-all duration-500 ease-in-out transform hover:scale-105 shadow-md hover:shadow-lg"
-            >
-              Get Start
-            </Link>
-          </div>
-
-          {/* Mobile menu button */}
-          <div className="md:hidden flex items-center">
+            {/* Mobile Menu Button */}
             <button
-              onClick={toggleMobileMenu}
-              className="inline-flex items-center justify-center p-2 rounded-md text-gray-300 hover:text-white hover:bg-gray-700/50 focus:outline-none transition-all duration-500 ease-in-out"
+              className="md:hidden p-3 rounded-full focus:outline-none relative group"
+              onClick={() => setMobileOpen(!mobileOpen)}
+              onMouseEnter={() => setHoveredItem("menu")}
+              onMouseLeave={() => setHoveredItem(null)}
             >
-              {isMobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+              <div className="w-7 h-7 relative">
+                <span
+                  className={`absolute block w-full h-0.5 rounded-full transition-all duration-400 ${
+                    isScrolled ? "bg-gray-100" : "bg-white"
+                  } ${mobileOpen ? "rotate-45 top-1/2" : "top-1"}`}
+                />
+                <span
+                  className={`absolute block w-full h-0.5 rounded-full transition-all duration-400 ${
+                    isScrolled ? "bg-gray-100" : "bg-white"
+                  } ${mobileOpen ? "opacity-0" : "top-1/2"}`}
+                />
+                <span
+                  className={`absolute block w-full h-0.5 rounded-full transition-all duration-400 ${
+                    isScrolled ? "bg-gray-100" : "bg-white"
+                  } ${mobileOpen ? "-rotate-45 top-1/2" : "bottom-1"}`}
+                />
+                <span
+                  className="absolute inset-0 rounded-full bg-gradient-to-r from-purple-400/20 to-blue-400/20 scale-0 group-hover:scale-100 transition-transform duration-400"
+                />
+              </div>
             </button>
           </div>
         </div>
 
-        {/* Mobile Navigation */}
-        {isMobileMenuOpen && (
-          <div className="md:hidden mt-2 bg-gray-800/90 backdrop-blur-md rounded-md shadow-lg p-2 transition-all duration-700 ease-in-out">
-            {navItems.map((item) => (
-              <div key={item.name} className="px-2 py-1">
-                {item.subItems ? (
-                  <>
-                    <button
-                      onClick={() => toggleDropdown(item.name)}
-                      className="flex w-full items-center justify-between px-3 py-2 text-base font-medium text-gray-300 hover:text-white hover:bg-gray-700 rounded-md transition-all duration-500 ease-in-out"
+        {/* Mobile Menu */}
+        <div
+          className={`md:hidden fixed inset-0 bg-gradient-to-br from-gray-900/95 via-purple-900/95 to-blue-900/95 backdrop-blur-lg z-30 transition-all duration-600 ease-in-out animate-waveReveal ${
+            mobileOpen
+              ? "opacity-100 translate-x-0"
+              : "opacity-0 translate-x-full"
+          }`}
+        >
+          <div className="h-full flex flex-col justify-center px-6 py-16">
+            <nav className="space-y-4">
+              {navItems.map((item) => (
+                <div key={item.name} className="overflow-hidden">
+                  <button
+                    className={`block w-full text-xl font-semibold py-4 px-6 rounded-xl transition-all duration-500 relative group ${
+                      activeMenu === item.name
+                        ? "bg-white/10 text-white"
+                        : "text-white/90 hover:text-white"
+                    }`}
+                    onClick={() => {
+                      if (!item.subItems) {
+                        setMobileOpen(false);
+                      } else {
+                        setActiveMenu(
+                          activeMenu === item.name ? null : item.name
+                        );
+                      }
+                    }}
+                  >
+                    <div className="flex justify-between items-center">
+                      <span className="relative z-10">{item.name}</span>
+                      {item.subItems && (
+                        <svg
+                          className={`w-5 h-5 transform transition-transform duration-400 ${
+                            activeMenu === item.name ? "rotate-180" : ""
+                          }`}
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          stroke="currentColor"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth={2}
+                            d="M19 9l-7 7-7-7"
+                          />
+                        </svg>
+                      )}
+                      <span
+                        className="absolute inset-0 bg-gradient-to-r from-purple-400/10 to-blue-400/10 rounded-xl scale-0 group-hover:scale-100 transition-transform duration-400"
+                      />
+                    </div>
+                  </button>
+
+                  {item.subItems && (
+                    <div
+                      className={`overflow-hidden transition-all duration-600 ${
+                        activeMenu === item.name
+                          ? "max-h-[400px] opacity-100 translate-y-0"
+                          : "max-h-0 opacity-0 translate-y-4"
+                      }`}
                     >
-                      {item.name}
-                      {item.subItems.some((sub) => sub.hot) && (
-                        <span className="ml-2 inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium bg-purple-600 text-white">
-                          Hot
-                        </span>
-                      )}
-                      {openDropdown === item.name ? (
-                        <ChevronUp className="h-5 w-5 transition-transform duration-500 ease-in-out" />
-                      ) : (
-                        <ChevronDown className="h-5 w-5 transition-transform duration-500 ease-in-out" />
-                      )}
-                    </button>
-                    {openDropdown === item.name && (
-                      <div className="pl-4 mt-1">
+                      <div className="pl-8 pt-3 space-y-3">
                         {item.subItems.map((subItem) => (
                           <Link
                             key={subItem.name}
                             href={subItem.href}
-                            className="block px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white rounded-md transition-all duration-500 ease-in-out"
-                            onClick={() => {
-                              setIsMobileMenuOpen(false);
-                              setOpenDropdown(null);
-                              if (hoverTimeout.current) clearTimeout(hoverTimeout.current);
-                            }}
+                            className="block text-base text-white/80 hover:text-white transition-all duration-400 py-3 px-4 rounded-lg relative group/sub hover:bg-white/10"
+                            onClick={() => setMobileOpen(false)}
                           >
-                            {subItem.name}
-                            {subItem.hot && (
-                              <span className="ml-2 inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium bg-purple-600 text-white">
-                                Hot
-                              </span>
-                            )}
+                            <span className="relative z-10">
+                              {subItem.name}
+                            </span>
+                            <span
+                              className="absolute left-0 top-0 h-full w-1 bg-gradient-to-b from-purple-400 to-blue-400 transform -translate-x-full group-hover/sub:translate-x-0 transition-transform duration-400"
+                            />
                           </Link>
                         ))}
                       </div>
-                    )}
-                  </>
-                ) : (
-                  <Link
-                    href={item.href}
-                    className="block px-3 py-2 text-base font-medium text-gray-300 hover:text-white hover:bg-gray-700 rounded-md transition-all duration-500 ease-in-out"
-                    onClick={() => setIsMobileMenuOpen(false)}
-                  >
-                    {item.name}
-                  </Link>
-                )}
-              </div>
-            ))}
-            <div className="mt-2">
-              <Link
-                href="/get-start"
-                className="block w-full text-center bg-indigo-600 text-white font-semibold px-6 py-2 rounded-lg hover:bg-indigo-700 transition-all duration-500 ease-in-out transform hover:scale-105 shadow-md hover:shadow-lg"
-              >
-                Get Start
-              </Link>
-            </div>
+                    </div>
+                  )}
+                </div>
+              ))}
+            </nav>
           </div>
-        )}
-      </nav>
-    </header>
+        </div>
+      </header>
+
+      {/* Global Styles */}
+      <style jsx global>{`
+        /* Smooth scrolling */
+        html {
+          scroll-behavior: smooth;
+        }
+
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+          width: 6px;
+          height: 6px;
+        }
+        ::-webkit-scrollbar-track {
+          background: rgba(0, 0, 0, 0.2);
+        }
+        ::-webkit-scrollbar-thumb {
+          background: linear-gradient(to bottom, #a855f7, #3b82f6);
+          border-radius: 6px;
+        }
+
+        /* Ripple animation */
+        @keyframes ripple {
+          0% {
+            transform: scale(0);
+            opacity: 1;
+          }
+          100% {
+            transform: scale(2);
+            opacity: 0;
+          }
+        }
+        .animate-ripple {
+          animation: ripple 0.6s ease-out forwards;
+        }
+
+        /* Pulse animation for logo */
+        @keyframes pulse-slow {
+          0%, 100% {
+            transform: scale(1);
+            opacity: 1;
+          }
+          50% {
+            transform: scale(1.05);
+            opacity: 0.9;
+          }
+        }
+        .animate-pulse-slow {
+          animation: pulse-slow 3s ease-in-out infinite;
+        }
+
+        /* Menu reveal animation */
+        @keyframes menu-reveal {
+          0% {
+            opacity: 0;
+            transform: translateY(20px);
+          }
+          100% {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+        .animate-menu-reveal {
+          animation: menu-reveal 0.5s ease-out forwards;
+        }
+
+        /* Wave reveal for mobile menu */
+        @keyframes waveReveal {
+          0% {
+            clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+            opacity: 0;
+          }
+          100% {
+            clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+            opacity: 1;
+          }
+        }
+        .animate-waveReveal {
+          animation: waveReveal 0.6s ease-out forwards;
+        }
+      `}</style>
+    </>
   );
 };
 

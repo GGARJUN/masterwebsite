@@ -3,7 +3,7 @@ import Link from 'next/link';
 
 const Hero = () => {
     return (
-        <div className="relative isolate px-6 pt-14 lg:px-8 min-h-[80vh] flex items-center">
+        <div className="relative isolate px-6 pt-14 lg:px-8 min-h-[80vh] flex items-center bg-black">
             {/* Background Blur - Top */}
             <div
                 aria-hidden="true"
@@ -19,7 +19,7 @@ const Hero = () => {
             </div>
 
             {/* Main Content */}
-            <div className="mx-auto max-w-2xl py-20">
+            <div className="mx-auto max-w-2xl py-20 ">
                 <div className="hidden sm:mb-8 sm:flex sm:justify-center">
                     <div className="relative rounded-full px-3 py-1 text-sm leading-6 text-gray-600 ring-1 ring-gray-900/10 hover:ring-gray-900/20">
                         Announcing our next round of funding.{' '}
@@ -30,7 +30,7 @@ const Hero = () => {
                     </div>
                 </div>
                 <div className="text-center">
-                    <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl">
+                    <h1 className="text-4xl font-bold tracking-tight text-gray-100 sm:text-6xl">
                         Data to enrich your online business
                     </h1>
                     <p className="mt-6 text-lg leading-8 text-gray-600">
@@ -44,7 +44,7 @@ const Hero = () => {
                         >
                             Get started
                         </Link>
-                        <Link href="/" className="text-sm font-semibold leading-6 text-gray-900">
+                        <Link href="/" className="text-sm font-semibold leading-6 text-gray-100">
                             Learn more <span aria-hidden="true">→</span>
                         </Link>
                     </div>

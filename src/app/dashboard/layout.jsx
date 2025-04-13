@@ -47,11 +47,7 @@ function DashboardLayout({ children }) {
         {/* Main Content Area */}
         <div className="flex-1 md:ml-64">
           {/* Content Container */}
-          <div className="px-4 sm:px-6 lg:px-8 py-6">
-            <div className="  p-6 sm:p-8">
               {children}
-            </div>
-          </div>
         </div>
       </div>
 
