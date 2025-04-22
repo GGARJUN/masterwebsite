@@ -5,11 +5,11 @@ import { Sparkles, Eye, Hand, Lock, Rocket } from 'lucide-react';
 const Button16 = () => {
     return (
         <div className="w-full p-10 bg-white rounded-3xl shadow-2xl">
-            <div className="flex flex-col md:flex-row justify-center w-full items-center gap-12">
+      <div className="flex flex-col md:flex-row justify-evenly w-full items-center gap-8">
                 {/* Hover Button */}
                 <div className="flex flex-col items-center gap-4">
                     <h1 className="text-lg font-bold text-gray-800 tracking-wider">Hover Effect</h1>
-                    <button className="relative overflow-hidden bg-purple-600 text-white h-12 px-8 rounded-2xl font-medium shadow-md group">
+                    <button className="relative overflow-hidden bg-gradient-to-br from-indigo-600 to-purple-600 text-white h-12 px-8 rounded-2xl font-medium shadow-md group">
                         <span className="relative z-10 flex items-center gap-2">
                             <Sparkles className="w-5 h-5" />
                             Hover Me
@@ -25,7 +25,7 @@ const Button16 = () => {
                 {/* Focus Button */}
                 <div className="flex flex-col items-center gap-4">
                     <h1 className="text-lg font-bold text-gray-800 tracking-wider">Focus Effect</h1>
-                    <button className="relative bg-emerald-600 text-white h-12 px-8 rounded-2xl font-medium shadow-md focus:outline-none group">
+                    <button className="relative bg-gradient-to-br from-blue-600 to-cyan-500 text-white h-12 px-8 rounded-2xl font-medium shadow-md focus:outline-none group">
                         <span className="relative z-10 flex items-center gap-2 transition-transform duration-300 group-focus:translate-x-2">
                             <Eye className="w-5 h-5" />
                             Focus
@@ -38,7 +38,7 @@ const Button16 = () => {
                 {/* Active Button */}
                 <div className="flex flex-col items-center gap-4">
                     <h1 className="text-lg font-bold text-gray-800 tracking-wider">Active Effect</h1>
-                    <button className="relative bg-red-600 text-white h-12 px-8 rounded-2xl font-medium shadow-md focus:border-2">
+                    <button className="relative bg-gradient-to-br from-emerald-600 to-teal-500 text-white h-12 px-8 rounded-2xl font-medium shadow-md focus:border-2">
                         <span className="relative z-10 flex items-center gap-2">
                             <Hand className="w-5 h-5" />
                             Press
@@ -61,12 +61,12 @@ const Button16 = () => {
                 {/* Ultra Animated Button */}
                 <div className="flex flex-col items-center gap-4">
                     <h1 className="text-lg font-bold text-gray-800 tracking-wider">Ultra Animated</h1>
-                    <button className="relative bg-orange-600 text-white h-12 px-8 rounded-2xl font-medium shadow-md group">
+                    <button className="relative bg-gradient-to-br from-rose-600 to-pink-600 text-white h-12 px-8 rounded-2xl font-medium shadow-md group">
                         <span className="relative z-10 flex items-center gap-2">
                             <Rocket className="w-5 h-5" />
                             Animated
                         </span>
-                        <span className="absolute inset-0 animate-pulseWave bg-orange-800/20"></span>
+                        <span className="absolute inset-0 animate-pulseWave bg-gradient-to-br from-rose-600 to-pink-600"></span>
                         <span className="absolute inset-0 animate-spinFrame border-2 border-orange-300/50 rounded-2xl"></span>
                         <span className="absolute w-3 h-3 bg-white/40 rounded-full top-1 left-1 animate-orbitParticle"></span>
                         <span className="absolute w-3 h-3 bg-white/40 rounded-full bottom-1 right-1 animate-orbitParticle delay-500"></span>

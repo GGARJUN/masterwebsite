@@ -128,10 +128,10 @@ const Button15 = () => {
         }
       `}</style>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8">
+<div className="flex flex-col md:flex-row justify-evenly w-full items-center gap-8">
         {/* Holographic Scan Button */}
         <div className="flex flex-col items-center gap-3">
-          <h2 className="text-xs font-mono text-cyan-300 tracking-widest hover:text-cyan-400 transition-colors">HOLO-SCAN</h2>
+          <h2 className="text-xs font-mono text-cyan-300 tracking-widest hover:text-cyan-400 transition-colors">HOVER EFFECT</h2>
           <button
             onMouseEnter={() => setStates({...states, hover: true})}
             onMouseLeave={() => setStates({...states, hover: false})}
@@ -144,7 +144,7 @@ const Button15 = () => {
             `}
           >
             <div className="relative z-10 flex items-center justify-center gap-3">
-              <span className="group-hover:text-cyan-400 transition-colors">SCAN</span>
+              <span className="group-hover:text-cyan-400 transition-colors">Hover Me</span>
               <ArrowRight className={`w-3 h-3 transition-all ${states.hover ? 'translate-x-3' : ''}`} />
             </div>
             {states.hover && (
@@ -161,7 +161,7 @@ const Button15 = () => {
 
         {/* Digital Flicker Terminal */}
         <div className="flex flex-col items-center gap-3">
-          <h2 className="text-xs font-mono text-purple-300 tracking-widest hover:text-purple-400 transition-colors">TERMINAL</h2>
+          <h2 className="text-xs font-mono text-purple-300 tracking-widest hover:text-purple-400 transition-colors">Focus Effect</h2>
           <button
             onFocus={() => setStates({...states, focus: true})}
             onBlur={() => setStates({...states, focus: false})}
@@ -174,7 +174,7 @@ const Button15 = () => {
             `}
           >
             <div className="relative z-10 flex items-center justify-center gap-3">
-              <span className={states.focus ? 'text-purple-400' : ''}>ACCESS</span>
+              <span className={states.focus ? 'text-purple-400' : ''}>FOCUS ME</span>
               <Eye className={`w-3 h-3 transition-all ${states.focus ? 'scale-150' : ''}`} />
             </div>
             <div className="absolute inset-0 bg-gradient-to-b from-purple-400/10 to-transparent opacity-0 transition-opacity duration-300 pointer-events-none" />
@@ -183,7 +183,7 @@ const Button15 = () => {
 
         {/* Quantum Pulse Activator */}
         <div className="flex flex-col items-center gap-3">
-          <h2 className="text-xs font-mono text-emerald-300 tracking-widest hover:text-emerald-400 transition-colors">QUANTUM PULSE</h2>
+          <h2 className="text-xs font-mono text-emerald-300 tracking-widest hover:text-emerald-400 transition-colors">Active Effect</h2>
           <button
             onMouseDown={(e) => handleRipple(e, 2)}
             className={`
@@ -194,7 +194,7 @@ const Button15 = () => {
             `}
           >
             <div className="relative z-10 flex items-center justify-center gap-3">
-              <span className={states.active ? 'text-emerald-400' : ''}>ACTIVATE</span>
+              <span className={states.active ? 'text-emerald-400' : ''}>Press Me</span>
               <Zap className={`w-3 h-3 transition-transform ${states.active ? 'scale-150 rotate-45' : ''}`} />
             </div>
             {states.ripple.active && (
@@ -215,7 +215,7 @@ const Button15 = () => {
 
         {/* System Corrupt Error */}
         <div className="flex flex-col items-center gap-3">
-          <h2 className="text-xs font-mono text-gray-500 tracking-widest">SYSTEM ERROR</h2>
+          <h2 className="text-xs font-mono text-gray-500 tracking-widest">Disabled State</h2>
           <button
             disabled
             className={`
@@ -226,7 +226,7 @@ const Button15 = () => {
             `}
           >
             <div className="relative z-10 flex items-center justify-center gap-3">
-              <span>CORRUPTED</span>
+              <span>Disabled</span>
               <Lock className="w-3 h-3" />
             </div>
             <div className="absolute inset-0 bg-red-400/5 pointer-events-none" />
@@ -236,7 +236,7 @@ const Button15 = () => {
 
         {/* Neon Core Reactor */}
         <div className="flex flex-col items-center gap-3">
-          <h2 className="text-xs font-mono text-pink-300 tracking-widest hover:text-pink-400 transition-colors">CORE REACTOR</h2>
+          <h2 className="text-xs font-mono text-pink-300 tracking-widest hover:text-pink-400 transition-colors">Animated</h2>
           <button
             className={`
               relative h-14 px-8 font-mono font-medium text-pink-300
@@ -247,7 +247,7 @@ const Button15 = () => {
             `}
           >
             <div className="relative z-10 flex items-center justify-center gap-3">
-              <span>ENERGIZE</span>
+              <span>Animated</span>
               <Sparkles className="w-3 h-3" />
             </div>
             <div className="absolute inset-0 bg-pink-400/5 opacity-0 hover:opacity-100 transition-opacity duration-500 pointer-events-none" />

@@ -9,22 +9,32 @@ const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
 
   const leftNavItems = [
-    { name: "Acheter", href: "/acheter" },
-    { name: "Vendre", href: "/vendre" },
-    { name: "Ressources", href: "/ressources" },
+    { name: "Home", href: "/" },
+    {
+      name: "Products",
+      href: "/",
+      subItems: [
+        { name: "All Products", href: "/" },
+        { name: "New Arrivals", href: "/" },
+        { name: "Best Sellers", href: "/" },
+        { name: "Categories", href: "/" },
+      ],
+    },
+    {
+      name: "Solutions",
+      href: "/",
+      subItems: [
+        { name: "Marketing", href: "/" },
+        { name: "Analytics", href: "/" },
+        { name: "Commerce", href: "/" },
+        { name: "Insights", href: "/" },
+      ],
+    },
   ];
 
   const rightNavItems = [
-    {
-      name: "À propos",
-      href: "/a-propos",
-      subItems: [
-        { name: "Notre histoire", href: "/a-propos/histoire" },
-        { name: "Équipe", href: "/a-propos/equipe" },
-      ],
-    },
-    { name: "Concept", href: "/concept" },
-    { name: "Contact", href: "/contact" },
+    { name: "Resources", href: "/" },
+    { name: "Pricing", href: "/" },
   ];
 
   const toggleDropdown = (itemName) => {
@@ -57,24 +67,21 @@ const Header = () => {
 
   return (
     <header
-      className={`bg-gradient-to-r from-green-900 via-green-800 to-green-600 text-white shadow-2xl  m-5 rounded-3xl transition-all duration-300 ${
-        isScrolled
-          ? "h-16 fixed top-2 w-[calc(100%-2.5rem)] z-50"
+      className={`bg-gradient-to-r from-green-900 via-green-800 to-green-600 text-white shadow-2xl  m-5 rounded-3xl transition-all duration-300 ${isScrolled
+          ? "h-20 fixed top-2 w-[calc(100%-2.5rem)] z-50"
           : "h-20 z-50"
-      }`}
+        }`}
     >
-      <nav className={`max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 ${
-        isScrolled ? "mt-3 z-50" : "pt-5 z-50"
-      }`}>
+      <nav className={`max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 ${isScrolled ? "pt-5 z-50" : "pt-5 z-50"
+        }`}>
         <div className="flex items-center justify-between h-full relative">
           {/* Centered Logo */}
           <div
-            className={`absolute left-1/2 transform -translate-x-1/2 flex items-center transition-all duration-300 ${
-              isScrolled ? "scale-90" : "z-50"
-            }`}
+            className={`absolute left-1/2 transform -translate-x-1/2 flex items-center transition-all duration-300 ${isScrolled ? "scale-90" : "z-50"
+              }`}
           >
-            <Link 
-              href="/" 
+            <Link
+              href="/"
               className="flex items-center space-x-4 group"
               onClick={() => {
                 setIsMobileMenuOpen(false);
@@ -84,9 +91,8 @@ const Header = () => {
               <div className="w-14 h-14 rounded-full bg-gradient-to-br from-green-200 to-green-100 flex items-center justify-center transform transition-all duration-300 group-hover:scale-110 group-hover:rotate-6 shadow-lg">
                 <span className="text-3xl font-extrabold text-green-800">M</span>
               </div>
-              <span className={`text-4xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-white to-gray-300 transition-all duration-300 group-hover:text-white tracking-wide ${
-                isScrolled ? "hidden" : ""
-              }`}>
+              <span className={`text-4xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-white to-gray-300 transition-all duration-500 group-hover:text-white tracking-wide ${isScrolled ? "" : ""
+                }`}>
                 Master site
               </span>
             </Link>
@@ -95,19 +101,7 @@ const Header = () => {
           {/* Left Navigation - Desktop */}
           <div className="hidden md:flex items-center space-x-6 z-50">
             {leftNavItems.map((item) => (
-              <Link
-                key={item.name}
-                href={item.href}
-                className="text-white hover:text-yellow-300 px-4 py-2 text-sm font-semibold rounded-md hover:bg-green-700/40 transition-all duration-300 border-b-2 border-transparent hover:border-yellow-300"
-              >
-                {item.name}
-              </Link>
-            ))}
-          </div>
 
-          {/* Right Navigation - Desktop */}
-          <div className="hidden md:flex items-center space-x-6 z-50">
-            {rightNavItems.map((item) => (
               <div key={item.name} className="relative group">
                 {item.subItems ? (
                   <>
@@ -149,6 +143,19 @@ const Header = () => {
             ))}
           </div>
 
+          {/* Right Navigation - Desktop */}
+          <div className="hidden md:flex items-center space-x-6 z-50">
+            {rightNavItems.map((item) => (
+              <Link
+                key={item.name}
+                href={item.href}
+                className="text-white hover:text-yellow-300 px-4 py-2 text-sm font-semibold rounded-md hover:bg-green-700/40 transition-all duration-300 border-b-2 border-transparent hover:border-yellow-300"
+              >
+                {item.name}
+              </Link>
+            ))}
+          </div>
+
           {/* Mobile menu button */}
           <div className="md:hidden flex items-center">
             <button
@@ -183,7 +190,7 @@ const Header = () => {
                   </Link>
                 </div>
               ))}
-              
+
               {rightNavItems.map((item) => (
                 <div key={item.name} className="px-2 pt-1">
                   {item.subItems ? (

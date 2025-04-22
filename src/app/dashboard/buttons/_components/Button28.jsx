@@ -89,12 +89,12 @@ const Button28 = () => {
         }
       `}</style>
 
-      <div className="flex flex-col md:flex-row justify-evenly w-full items-center gap-8">
+<div className="flex flex-col md:flex-row justify-evenly w-full items-center gap-8">
         {/* Hover Button */}
         <div className="flex flex-col items-center gap-4">
           <h1 className="text-lg font-semibold text-gray-800">Hover Effect</h1>
           <button
-            className="group relative overflow-hidden h-12 px-8 rounded-xl text-sm font-medium bg-purple-700 text-white shadow-md hover:shadow-[0_0_20px_rgba(168,85,247,0.7)] transition-all duration-500 backdrop-blur-[2px]"
+            className="group relative overflow-hidden h-12 px-8 rounded-xl text-sm font-medium bg-gradient-to-br from-indigo-600 to-purple-600 text-white shadow-md hover:shadow-[0_0_20px_rgba(168,85,247,0.7)] transition-all duration-500 backdrop-blur-[2px]"
           >
             <span className="relative z-10 transition-all duration-500 group-hover:-translate-y-1 group-hover:font-bold">
               Hover Me
@@ -120,7 +120,7 @@ const Button28 = () => {
         <div className="flex flex-col items-center gap-4">
           <h1 className="text-lg font-semibold text-gray-800">Focus Effect</h1>
           <button
-            className="group relative overflow-hidden h-12 px-8 rounded-xl text-sm font-medium bg-teal-600 text-white shadow-md focus:shadow-[0_0_20px_rgba(13,148,136,0.7)] transition-all duration-600 focus:outline-none"
+            className="group relative overflow-hidden h-12 px-8 rounded-xl text-sm font-medium bg-gradient-to-br from-blue-600 to-cyan-500 text-white shadow-md focus:shadow-[0_0_20px_rgba(13,148,136,0.7)] transition-all duration-600 focus:outline-none"
           >
             <span className="relative z-10 transition-all duration-600 group-focus:tracking-wider focus:animate-shimmer">
               Focus Me
@@ -135,7 +135,7 @@ const Button28 = () => {
         <div className="flex flex-col items-center gap-4">
           <h1 className="text-lg font-semibold text-gray-800">Active Effect</h1>
           <button
-            className="group relative overflow-hidden h-12 px-8 rounded-xl text-sm font-medium bg-fuchsia-600 text-white shadow-md active:shadow-sm transition-all duration-300"
+            className="group relative overflow-hidden h-12 px-8 rounded-xl text-sm font-medium bg-gradient-to-br from-emerald-600 to-teal-500 text-white shadow-md active:shadow-sm transition-all duration-300"
           >
             <span className="relative z-10 transition-all duration-300 group-active:font-extrabold group-active:-translate-y-1">
               Press Me
@@ -168,7 +168,7 @@ const Button28 = () => {
         <div className="flex flex-col items-center gap-4">
           <h1 className="text-lg font-semibold text-gray-800">Animated</h1>
           <button
-            className="group relative overflow-hidden h-12 px-8 rounded-xl text-sm font-medium bg-amber-600 text-white shadow-md animate-morph"
+            className="group relative overflow-hidden h-12 px-8 rounded-xl text-sm font-medium bg-gradient-to-br from-rose-600 to-pink-600 text-white shadow-md animate-morph"
           >
             <span className="relative z-10 transition-all duration-700 group-hover:font-bold">
               Animated

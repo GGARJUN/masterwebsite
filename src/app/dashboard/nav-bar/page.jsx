@@ -162,7 +162,7 @@ const NavBars = () => {
             </h1>
             <Link href={item.path}>
               <button
-                className="relative px-8 py-2 rounded-full text-white font-medium overflow-hidden transition-all duration-300 group-hover:shadow-lg"
+                className="relative px-8 py-2 rounded-full cursor-pointer text-white font-medium overflow-hidden transition-all duration-300 group-hover:shadow-lg"
               >
                 <span className="absolute inset-0 bg-gradient-to-r from-indigo-600 via-blue-500 to-cyan-400 transform transition-all duration-300 group-hover:scale-110"></span>
                 <span className="relative z-10 flex items-center gap-2">

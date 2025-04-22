@@ -59,7 +59,7 @@ const Button11 = () => {
         }
       `}</style>
 
-      <div className="flex flex-col md:flex-row justify-center w-full items-center gap-16">
+<div className="flex flex-col md:flex-row justify-evenly w-full items-center gap-8">
         {/* Hover Button */}
         <div className="flex flex-col items-center gap-4">
           <h1 className="text-lg font-bold text-gray-800 tracking-wider">Hover Effect</h1>
@@ -67,7 +67,7 @@ const Button11 = () => {
             className="group relative overflow-hidden rounded-2xl px-8 py-3 h-12 text-sm font-semibold transition-all duration-300 bg-white/80 text-gray-700 hover:bg-gradient-to-r hover:from-indigo-100 hover:to-blue-100 hover:text-indigo-100 shadow-md hover:shadow-lg"
           >
             <span
-              className="absolute inset-0 w-full h-full bg-gradient-to-r from-indigo-500 to-blue-500 transform -translate-x-full group-hover:translate-x-0 group-hover:opacity-100 opacity-0 transition-all duration-300"
+              className="absolute inset-0 w-full h-full bg-gradient-to-br from-indigo-600 to-purple-600 transform -translate-x-full group-hover:translate-x-0 group-hover:opacity-100 opacity-0 transition-all duration-300"
             />
             <div className="relative z-10 flex items-center justify-between">
               <span className="transition-all duration-300 group-hover:font-bold">Hover Me</span>
@@ -88,7 +88,7 @@ const Button11 = () => {
             className="group relative overflow-hidden rounded-2xl px-8 py-3 h-12 text-sm font-semibold transition-all duration-300 bg-white/80 text-gray-700 focus:bg-gradient-to-r focus:from-green-600 focus:to-teal-600 focus:text-white shadow-md focus:shadow-lg focus:outline-none"
           >
             <span
-              className="absolute inset-0 w-full h-full bg-gradient-to-r from-green-500 to-teal-500 transform -translate-x-full group-focus:translate-x-0 group-focus:opacity-100 opacity-0 transition-all duration-300"
+              className="absolute inset-0 w-full h-full bg-gradient-to-br from-blue-600 to-cyan-500 transform -translate-x-full group-focus:translate-x-0 group-focus:opacity-100 opacity-0 transition-all duration-300"
             />
             <div className="relative z-10 flex items-center justify-between">
               <span className="transition-all duration-300 group-focus:font-bold">Focus Me</span>
@@ -109,7 +109,7 @@ const Button11 = () => {
             className="group relative overflow-hidden rounded-2xl px-8 py-3 h-12 text-sm font-semibold transition-all duration-150 bg-white/80 text-gray-700 active:bg-gradient-to-r active:from-red-600 active:to-pink-600 active:text-white shadow-md active:shadow-sm"
           >
             <span
-              className="absolute inset-0 w-full h-full bg-gradient-to-r from-red-500 to-pink-500 transform -translate-x-full group-active:translate-x-0 group-active:opacity-100 opacity-0 transition-all duration-200"
+              className="absolute inset-0 w-full h-full bg-gradient-to-br from-emerald-600 to-teal-500 transform -translate-x-full group-active:translate-x-0 group-active:opacity-100 opacity-0 transition-all duration-200"
             />
             <div className="relative z-10 flex items-center justify-between">
               <span className="transition-all duration-300 group-active:font-bold">Press Me</span>
@@ -148,7 +148,7 @@ const Button11 = () => {
             className="group relative overflow-hidden rounded-2xl px-8 py-3 h-12 text-sm font-semibold bg-white/80 text-gray-700 shadow-md"
           >
             <span
-              className="absolute inset-0 w-full h-full bg-gradient-to-r from-yellow-500 to-orange-500 transform -translate-x-full opacity-0 animate-float"
+              className="absolute inset-0 w-full h-full bg-gradient-to-br from-rose-600 to-pink-600 transform -translate-x-full opacity-0 animate-float"
             />
             <div className="relative z-10 flex items-center justify-between">
               <span className="transition-all duration-300">Animated</span>

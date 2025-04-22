@@ -72,12 +72,12 @@ const Button26 = () => {
         }
       `}</style>
 
-      <div className="flex flex-col md:flex-row justify-center w-full items-center gap-16">
+<div className="flex flex-col md:flex-row justify-evenly w-full items-center gap-8">
         {/* Hover Button */}
         <div className="flex flex-col items-center gap-4">
           <h1 className="text-lg font-bold text-gray-800 tracking-wider">Hover Effect</h1>
           <button
-            className="group relative overflow-hidden rounded-xl px-8 py-3 h-12 text-sm font-semibold bg-purple-600 text-white shadow-md hover:shadow-xl transition-all duration-300"
+            className="group relative overflow-hidden rounded-xl px-8 py-3 h-12 text-sm font-semibold bg-gradient-to-br from-indigo-600 to-purple-600 text-white shadow-md hover:shadow-xl transition-all duration-300"
           >
             <div className="relative z-10 flex items-center justify-between">
               <span className="transition-transform duration-300 group-hover:translate-x-2">Hover Me</span>
@@ -97,7 +97,7 @@ const Button26 = () => {
               <span className="transition-opacity duration-300 group-focus:opacity-70">Focus Me</span>
               <ArrowRight className="h-5 w-5 transition-transform duration-300 group-focus:-rotate-45" />
             </div>
-            <span className="absolute inset-0 bg-cyan-800/30 animate-fadeInOut" />
+            <span className="absolute inset-0 bg-gradient-to-br from-blue-600 to-cyan-500 animate-fadeInOut" />
           </button>
         </div>
 
@@ -111,7 +111,7 @@ const Button26 = () => {
               <span className="transition-transform duration-200 group-active:-translate-y-1">Press Me</span>
               <ArrowRight className="h-5 w-5 transition-transform duration-200 group-active:scale-75" />
             </div>
-            <span className="absolute inset-0 bg-orange-800/30 animate-ripple" />
+            <span className="absolute inset-0 bg-gradient-to-br from-emerald-600 to-teal-500 animate-ripple" />
           </button>
         </div>
 
@@ -134,7 +134,7 @@ const Button26 = () => {
         <div className="flex flex-col items-center gap-4">
           <h1 className="text-lg font-bold text-gray-800 tracking-wider">Animated</h1>
           <button
-            className="group relative overflow-hidden rounded-xl px-8 py-3 h-12 text-sm font-semibold bg-amber-600 text-white shadow-md"
+            className="group relative overflow-hidden rounded-xl px-8 py-3 h-12 text-sm font-semibold bg-gradient-to-br from-rose-600 to-pink-600 text-white shadow-md"
           >
             <div className="relative z-10 flex items-center justify-between">
               <span className="transition-transform duration-300 group-hover:rotate-2">Animated</span>

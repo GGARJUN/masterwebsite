@@ -80,9 +80,7 @@ const Button30 = () => {
         .animate-flicker {
           animation: flicker 1.4s infinite;
         }
-        .animate-pulse {
-          animation: pulse 2s infinite cubic-bezier(0.4, 0, 0.2, 1);
-        }
+
         .animate-beam {
           animation: beam 1.8s linear infinite;
         }
@@ -104,7 +102,7 @@ const Button30 = () => {
         }
       `}</style>
 
-      <div className="flex flex-col md:flex-row justify-center w-full items-center gap-16">
+      <div className="flex flex-col md:flex-row justify-evenly w-full items-center gap-8">
         {/* Hover Button */}
         <div className="flex flex-col items-center gap-4">
           <h1 className="text-lg font-bold text-gray-800 tracking-wider">Hover Effect</h1>
@@ -135,7 +133,7 @@ const Button30 = () => {
         <div className="flex flex-col items-center gap-4">
           <h1 className="text-lg font-bold text-gray-800 tracking-wider">Focus Effect</h1>
           <button
-            className="group relative overflow-hidden rounded-2xl px-8 py-3 h-12 text-sm font-semibold bg-green-600 text-white shadow-lg focus:shadow-[0_0_30px_rgba(16,185,129,0.8)] transition-all duration-700 focus:outline-none"
+            className="group relative overflow-hidden rounded-2xl px-8 py-3 h-12 text-sm font-semibold bg-gradient-to-br from-blue-600 to-cyan-500 text-white shadow-lg focus:shadow-[0_0_30px_rgba(16,185,129,0.8)] transition-all duration-700 focus:outline-none"
           >
             <span
               className="absolute inset-0 w-full h-full bg-gradient-to-t from-green-500 to-teal-500 transform translate-y-full group-focus:translate-y-0 group-focus:opacity-100 opacity-0 transition-all duration-600 backdrop-blur-[3px]"
@@ -156,7 +154,7 @@ const Button30 = () => {
         <div className="flex flex-col items-center gap-4">
           <h1 className="text-lg font-bold text-gray-800 tracking-wider">Active Effect</h1>
           <button
-            className="group relative overflow-hidden rounded-2xl px-8 py-3 h-12 text-sm font-semibold bg-red-600 text-white shadow-lg transition-all duration-300"
+            className="group relative overflow-hidden rounded-2xl px-8 py-3 h-12 text-sm font-semibold bg-gradient-to-br from-emerald-600 to-teal-500 text-white shadow-lg transition-all duration-300"
           >
             <span
               className="absolute inset-0 w-full h-full bg-gradient-to-t from-red-500 to-pink-500 transform translate-y-full group-active:translate-y-0 group-active:opacity-100 opacity-0 transition-all duration-400"
@@ -200,16 +198,14 @@ const Button30 = () => {
         <div className="flex flex-col items-center gap-4">
           <h1 className="text-lg font-bold text-gray-800 tracking-wider">Animated</h1>
           <button
-            className="group relative overflow-hidden rounded-2xl px-8 py-3 h-12 text-sm font-semibold bg-yellow-600 text-white shadow-lg"
+            className="group relative overflow-hidden rounded-2xl px-8 py-3 h-12 text-sm font-semibold bg-gradient-to-br from-rose-600 to-pink-600 text-white shadow-lg"
           >
             <div className="relative z-10 flex items-center justify-between animate-pulse">
               <span className="transition-all duration-800">Animated</span>
-              <ArrowRight
-                className="h-5 w-5 animate-beam"
-              />
+
             </div>
             <span
-              className="absolute inset-0 bg-gradient-to-t from-yellow-500 to-orange-500 animate-pulse"
+              className="absolute inset-0 bg-gradient-to-br from-rose-600 to-pink-600 animate-pulse"
             />
             <span
               className="absolute w-4 h-4 bg-white/60 rounded-full bottom-0 left-2 animate-beam delay-100"

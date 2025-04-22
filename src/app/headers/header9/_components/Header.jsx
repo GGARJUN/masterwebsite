@@ -10,40 +10,29 @@ const Header = () => {
   const lastScrollY = useRef(0);
 
   const navItems = [
+    { name: "Home", href: "/" },
     {
-      name: "Home",
-      href: "/",
-    },
-    {
-      name: "About",
-      href: "/about",
-    },
-    {
-      name: "Services",
-      href: "/services",
+      name: "Products",
+      href: "#",
       subItems: [
-        { name: "Transport", href: "/services/transport" },
-        { name: "Logistics", href: "/services/logistics" },
-        { name: "Freight", href: "/services/freight" },
+        { name: "All Products", href: "/" },
+        { name: "New Arrivals", href: "/" },
+        { name: "Best Sellers", href: "/" },
+        { name: "Categories", href: "/" },
       ],
     },
     {
-      name: "Pages",
-      href: "/pages",
+      name: "Solutions",
+      href: "#",
       subItems: [
-        { name: "About Us", href: "/pages/about-us" },
-        { name: "Contact", href: "/pages/contact" },
-        { name: "FAQ", href: "/pages/faq" },
+        { name: "Marketing", href: "/" },
+        { name: "Analytics", href: "/" },
+        { name: "Commerce", href: "/" },
+        { name: "Insights", href: "/" },
       ],
     },
-    {
-      name: "Blog",
-      href: "/blog",
-    },
-    {
-      name: "Contact",
-      href: "/contact",
-    },
+    { name: "Resources", href: "/" },
+    { name: "Pricing", href: "/" },
   ];
 
   const toggleDropdown = (itemName) => {

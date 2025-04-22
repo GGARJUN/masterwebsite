@@ -5,14 +5,14 @@ import { Star } from 'lucide-react';
 const Button9 = () => {
   return (
     <div className="w-full p-10 bg-white rounded-3xl shadow-2xl">
-      <div className="flex flex-col md:flex-row justify-center w-full items-center gap-12">
+      <div className="flex flex-col md:flex-row justify-evenly w-full items-center gap-8">
         {/* Hover Button */}
         <div className="flex flex-col items-center gap-4">
           <h1 className="text-lg font-bold text-gray-800 tracking-wider">Hover Effect</h1>
-          <button className="relative overflow-hidden bg-gradient-to-r from-blue-500 to-indigo-600 text-white h-12 px-8 rounded-2xl font-medium shadow-md group">
+          <button className="cursor-pointer relative overflow-hidden bg-gradient-to-br from-indigo-600 to-purple-600 text-white h-12 px-8 rounded-2xl font-medium shadow-md group">
             <span className="relative z-10 flex items-center gap-2">
               <Star className="w-5 h-5" />
-              Hover Me
+              Hover 
             </span>
             <span className="absolute inset-0 bg-white/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
             <span className="absolute top-1/2 left-1/2 w-0 h-0 bg-white/30 group-hover:animate-rippleWave" 
@@ -23,10 +23,10 @@ const Button9 = () => {
         {/* Focus Button */}
         <div className="flex flex-col items-center gap-4">
           <h1 className="text-lg font-bold text-gray-800 tracking-wider">Focus Effect</h1>
-          <button className="relative bg-gradient-to-r from-green-500 to-teal-500 text-white h-12 px-8 rounded-2xl font-medium shadow-md focus:outline-none focus:ring-4 focus:ring-teal-300 focus:scale-[1.02] transition-transform">
+          <button className="cursor-pointer relative bg-gradient-to-br from-blue-600 to-cyan-500 text-white h-12 px-8 rounded-2xl font-medium shadow-md focus:outline-none focus:ring-4 focus:ring-teal-300 focus:scale-[1.02] transition-transform">
             <span className="relative z-10 flex items-center gap-2">
               <Star className="w-5 h-5" />
-              Focus 
+              Focus
             </span>
             <span className="absolute inset-0 bg-white/10 opacity-0 focus:opacity-100 transition-opacity duration-200"></span>
           </button>
@@ -35,7 +35,7 @@ const Button9 = () => {
         {/* Active Button */}
         <div className="flex flex-col items-center gap-4">
           <h1 className="text-lg font-bold text-gray-800 tracking-wider">Active Effect</h1>
-          <button className="relative bg-gradient-to-r from-red-500 to-pink-500 text-white h-12 px-8 rounded-2xl font-medium shadow-md active:scale-95 transition-transform">
+          <button className="cursor-pointer relative bg-gradient-to-br from-emerald-600 to-teal-500 text-white h-12 px-8 rounded-2xl font-medium shadow-md active:scale-95 transition-transform">
             <span className="relative z-10 flex items-center gap-2">
               <Star className="w-5 h-5" />
               Press 
@@ -57,8 +57,8 @@ const Button9 = () => {
 
         {/* Ultra Animated Button */}
         <div className="flex flex-col items-center gap-4">
-          <h1 className="text-lg font-bold text-gray-800 tracking-wider">Ultra Animated</h1>
-          <button className="relative bg-gradient-to-r from-yellow-500 to-orange-500 text-white h-12 px-8 rounded-2xl font-medium shadow-md group">
+          <h1 className="text-lg font-bold text-gray-800 tracking-wider">Animated</h1>
+          <button className="cursor-pointer relative bg-gradient-to-br from-rose-600 to-pink-600 text-white h-12 px-8 rounded-2xl font-medium shadow-md group">
             <span className="relative z-10 flex items-center gap-2">
               <Star className="w-5 h-5" />
               Animated

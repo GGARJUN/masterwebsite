@@ -4,7 +4,8 @@ import Link from "next/link";
 import React, { useState } from "react";
 
 const SideBar = () => {
-  const [activeItem, setActiveItem] = useState(null);
+  const [activeItem, setActiveItem] = useState(null); // Tracks hover state
+  const [clickedItem, setClickedItem] = useState(null); // Tracks clicked state
 
   const menu = [
     {
@@ -19,18 +20,18 @@ const SideBar = () => {
     },
     {
       id: 3,
-      name: "Slider",
-      path: "/dashboard/nav-bar",
+      name: "Card Slider",
+      path: "/dashboard/slider", // Corrected path for uniqueness
     },
     {
       id: 4,
       name: "Validation Form",
-      path: "/dashboard/nav-bar",
+      path: "/dashboard/validation-form", // Corrected path for uniqueness
     },
   ];
 
   return (
-    <div className="w-64 h-screen fixed left-0 top-0  shadow-xl p-6 py-10 transition-all duration-300">
+    <div className="w-64 h-screen fixed left-0 top-0 shadow-xl p-6 py-10 transition-all duration-300">
       {/* Logo Section */}
       <div className="flex flex-col items-center justify-center mb-10">
         <Link href="/" className="flex items-center space-x-3 group">
@@ -50,10 +51,11 @@ const SideBar = () => {
           <Link
             key={item.id}
             href={item.path}
+            onClick={() => setClickedItem(item.id)} // Set clicked item on click
             onMouseEnter={() => setActiveItem(item.id)}
             onMouseLeave={() => setActiveItem(null)}
             className={`group relative overflow-hidden rounded-xl px-6 py-3 text-sm font-semibold transition-all duration-100 ${
-              activeItem === item.id
+              clickedItem === item.id || activeItem === item.id
                 ? "bg-gradient-to-r from-indigo-600 to-blue-600 text-white shadow-lg"
                 : "bg-white/80 text-gray-700 hover:bg-gradient-to-r hover:from-indigo-50 hover:to-blue-50 hover:text-indigo-700"
             }`}
@@ -61,7 +63,7 @@ const SideBar = () => {
             {/* Background Gradient Effect */}
             <span
               className={`absolute inset-0 w-full h-full bg-gradient-to-r from-indigo-500 to-blue-500 transform ${
-                activeItem === item.id
+                clickedItem === item.id || activeItem === item.id
                   ? "translate-x-0 opacity-100"
                   : "-translate-x-full opacity-0"
               } transition-all duration-300`}
@@ -74,7 +76,7 @@ const SideBar = () => {
               </span>
               <ArrowRight
                 className={`z-10 h-5 w-5 transition-all duration-300 ${
-                  activeItem === item.id
+                  clickedItem === item.id || activeItem === item.id
                     ? "translate-x-2 -rotate-45"
                     : "group-hover:translate-x-2"
                 }`}
@@ -84,7 +86,9 @@ const SideBar = () => {
             {/* Shine Effect */}
             <span
               className={`absolute top-0 left-0 w-full h-full bg-gradient-to-r from-transparent via-white/20 to-transparent transform -skew-x-12 transition-all duration-500 ${
-                activeItem === item.id ? "translate-x-full" : "-translate-x-full"
+                clickedItem === item.id || activeItem === item.id
+                  ? "translate-x-full"
+                  : "-translate-x-full"
               }`}
             ></span>
           </Link>

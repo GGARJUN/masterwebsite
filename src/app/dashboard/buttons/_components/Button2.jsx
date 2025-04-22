@@ -7,15 +7,15 @@ const Button2 = () => {
   const [isFocused, setIsFocused] = useState(false);
 
   return (
-    <div className="w-full p-12 bg-gradient-to-br from-gray-50 to-gray-100 rounded-2xl shadow-inner">
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 items-center justify-center">
+    <div className="w-full p-12 rounded-2xl shadow-inner">
+      <div className="flex flex-col md:flex-row justify-evenly w-full items-center gap-8">
         {/* 3D Hover Button */}
         <div className="flex flex-col items-center gap-4">
           <h1 className="text-lg font-medium text-gray-700">Hover Effect</h1>
           <button
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}
-            className={`relative h-12 px-8 rounded-lg font-semibold text-white transition-all duration-300 ease-out ${
+            className={`relative h-12 px-8 rounded-lg font-semibold text-white transition-all duration-300 ease-out  cursor-pointer ${
               isHovered ? 'translate-y-[-4px] shadow-lg' : 'shadow-md'
             }`}
             style={{
@@ -40,7 +40,7 @@ const Button2 = () => {
           <button
             onFocus={() => setIsFocused(true)}
             onBlur={() => setIsFocused(false)}
-            className={`relative h-12 px-8 rounded-lg font-semibold text-white transition-all duration-200 ${
+            className={`relative h-12 px-8 rounded-lg font-semibold text-white transition-all duration-200  cursor-pointer ${
               isFocused ? 'ring-4 ring-blue-300 scale-[1.02]' : ''
             }`}
             style={{
@@ -59,7 +59,7 @@ const Button2 = () => {
             onMouseDown={() => setIsActive(true)}
             onMouseUp={() => setIsActive(false)}
             onMouseLeave={() => setIsActive(false)}
-            className={`relative h-12 px-8 rounded-lg font-semibold text-white transition-transform duration-100 ${
+            className={`relative h-12 px-8 rounded-lg font-semibold text-white transition-transform duration-100  cursor-pointer ${
               isActive ? 'scale-95 shadow-inner' : 'shadow-md'
             }`}
             style={{
@@ -88,7 +88,7 @@ const Button2 = () => {
         <div className="flex flex-col items-center gap-4">
           <h1 className="text-lg font-medium text-gray-700">Animated</h1>
           <button
-            className="relative h-12 px-8 rounded-lg font-semibold text-white shadow-md overflow-hidden group"
+            className="relative h-12 px-8 rounded-lg font-semibold text-white shadow-md overflow-hidden group cursor-pointer "
             style={{
               background: 'linear-gradient(145deg, #ec4899, #db2777)'
             }}

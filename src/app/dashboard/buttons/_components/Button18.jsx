@@ -128,7 +128,7 @@ const Button18 = () => {
         }
       `}</style>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8">
+<div className="flex flex-col md:flex-row justify-evenly w-full items-center gap-8">
         {/* Holographic Scan Button */}
         <div className="flex flex-col items-center gap-3">
           <h2 className="text-xs font-mono text-cyan-300 tracking-widest hover:text-cyan-400 transition-colors">HOLO-SCAN</h2>

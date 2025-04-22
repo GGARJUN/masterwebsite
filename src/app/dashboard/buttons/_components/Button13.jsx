@@ -25,7 +25,7 @@ const Button13 = () => {
   };
 
   return (
-    <div className="w-full p-12 bg-gradient-to-tr from-gray-950 to-gray-900 shadow-2xl">
+    <div className="w-full p-12  shadow-2xl">
       <style jsx global>{`
         @keyframes scan {
           0% { transform: translateY(-100%); }
@@ -73,7 +73,7 @@ const Button13 = () => {
         }
       `}</style>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8">
+<div className="flex flex-col md:flex-row justify-evenly w-full items-center gap-8">
         {/* Hover Button - Scanline Effect */}
         <div className="flex flex-col items-center gap-3">
           <h2 className="text-xs font-mono text-cyan-400 tracking-widest">HOVER EFFECT</h2>
@@ -93,7 +93,7 @@ const Button13 = () => {
             }}
           >
             <div className="relative z-10 flex items-center justify-center gap-3">
-              <span>Scan</span>
+              <span>Hover Me</span>
               <ArrowRight className={`w-5 h-5 transition-transform ${states.hover ? 'translate-x-3 rotate-12' : ''}`} />
             </div>
             <div className={`
@@ -123,7 +123,7 @@ const Button13 = () => {
             }}
           >
             <div className="relative z-10 flex items-center justify-center gap-3">
-              <span>Circuit</span>
+              <span>Focus Me</span>
               <Eye className={`w-5 h-5 transition-transform ${states.focus ? 'scale-125' : ''}`} />
             </div>
             <div className={`
@@ -152,7 +152,7 @@ const Button13 = () => {
             }}
           >
             <div className="relative z-10 flex items-center justify-center gap-3">
-              <span>Pulse</span>
+              <span>Press Me</span>
               <Zap className={`w-5 h-5 transition-transform ${states.active ? 'rotate-45' : ''}`} />
             </div>
             {states.ripple.active && (
@@ -188,7 +188,7 @@ const Button13 = () => {
             `}
           >
             <div className="relative z-10 flex items-center justify-center gap-3">
-              <span>Offline</span>
+              <span>Disabled</span>
               <Lock className="w-5 h-5 animate-pulse" />
             </div>
             <div className="absolute inset-0 bg-gray-900/70 animate-matrix" />
@@ -208,7 +208,7 @@ const Button13 = () => {
             }}
           >
             <div className="relative z-10 flex items-center justify-center gap-3">
-              <span>Matrix</span>
+              <span>Animated</span>
               <Sparkles className="w-5 h-5 animate-float" />
             </div>
             <div className={`

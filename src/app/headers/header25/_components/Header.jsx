@@ -64,15 +64,15 @@ const Header = () => {
   const navItems = [
     { name: "Home", href: "/" },
     {
-      name: "Tools",
-      href: "/tools",
+      name: "Products",
+      href: "/",
       subItems: [
+        { name: "All Products", href: "/" },
+        { name: "New Arrivals", href: "/" , hot: true},
+        { name: "Best Sellers", href: "/" },
+        { name: "Categories", href: "/" },
         { name: "Inner Pages", href: "/tools/inner-pages" },
         { name: "Style Guide", href: "/tools/style-guide", hot: true },
-        { name: "Blog", href: "/tools/blog" },
-        { name: "Blog Details", href: "/tools/blog-details" },
-        { name: "Pricing", href: "/tools/pricing" },
-        { name: "Contact", href: "/tools/contact" },
         { name: "Sign In", href: "/tools/sign-in" },
         { name: "Sign Up", href: "/tools/sign-up" },
         { name: "Team", href: "/tools/team" },
@@ -81,23 +81,23 @@ const Header = () => {
       ],
     },
     {
-      name: "Pages",
-      href: "/pages",
+      name: "Solutions",
+      href: "/",
       subItems: [
-        { name: "Dashboard", href: "/pages/dashboard" },
-        { name: "Profile", href: "/pages/profile" },
-        { name: "Notification", href: "/pages/notification" },
-        { name: "Chat Export", href: "/pages/chat-export" },
-        { name: "Appearance", href: "/pages/appearance" },
-        { name: "Plans and Billing", href: "/pages/plans" },
-        { name: "Sessions", href: "/pages/sessions" },
-        { name: "Application", href: "/pages/application" },
-        { name: "Release Notes", href: "/pages/release-notes" },
-        { name: "Help & FAQs", href: "/pages/help" },
+        { name: "Marketing", href: "/" },
+        { name: "Analytics", href: "/" },
+        { name: "Commerce", href: "/" },
+        { name: "Insights", href: "/" },
+        { name: "Appearance", href: "/" },
+        { name: "Plans and Billing", href: "/" },
+        { name: "Sessions", href: "/" },
+        { name: "Application", href: "/" },
+        { name: "Release Notes", href: "/" },
+        { name: "Help & FAQs", href: "/" },
       ],
     },
-    { name: "Roadmap", href: "/roadmap" },
-    { name: "How to use", href: "/how-to-use" },
+    { name: "Resources", href: "/" },
+    { name: "Pricing", href: "/" },
   ];
 
   return (
@@ -114,7 +114,9 @@ const Header = () => {
               <div className="w-10 h-10 bg-gradient-to-br from-indigo-600 to-cyan-400 rounded-lg flex items-center justify-center transform transition-all duration-500 ease-out group-hover:scale-110">
                 <span className="text-white font-bold text-xl">M</span>
               </div>
-              <span className="text-xl font-bold text-cyan-300 transition-all duration-500 ease-out group-hover:text-cyan-200">
+              <span  className={`text-xl font-bold  transition-all duration-500 ease-out ${
+          isContactVisible ? "text-black" : " text-cyan-300"
+        }`}>
                 Master Site
               </span>
             </Link>

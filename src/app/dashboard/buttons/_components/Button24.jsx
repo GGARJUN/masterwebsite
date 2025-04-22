@@ -55,7 +55,7 @@ const Button24 = () => {
         }
       `}</style>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6">
+<div className="flex flex-col md:flex-row justify-evenly w-full items-center gap-8">
         {/* Primary Button with Hover Elevation */}
         <div className="flex flex-col items-center gap-3">
           <h2 className="text-sm font-medium text-gray-600 tracking-wider">HOVER EFFECT</h2>
@@ -177,11 +177,9 @@ const Button24 = () => {
           <button
             className={`
               relative h-12 px-6 rounded-xl font-medium text-white 
-              shadow-lg overflow-hidden
+              shadow-lg overflow-hidden bg-gradient-to-br from-rose-600 to-pink-600
             `}
-            style={{
-              background: 'linear-gradient(135deg, #ec4899, #f472b6)'
-            }}
+
           >
             <div className="relative z-10 flex items-center justify-center gap-2">
               <span>Shimmer</span>

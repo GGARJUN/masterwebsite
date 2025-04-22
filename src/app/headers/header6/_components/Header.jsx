@@ -20,33 +20,51 @@ const Header = () => {
   const techProducts = {
     Systems: [
       { 
-        name: "Nexus Core", 
+        name: "All Products", 
         icon: <Cpu className="w-5 h-5 text-indigo-400 group-hover:text-indigo-600 transition-colors" />, 
         desc: "Central processing hub",
         color: "from-indigo-500 to-purple-500"
       },
       { 
-        name: "Bolt Network", 
+        name: "New Arrivals", 
         icon: <Zap className="w-5 h-5 text-blue-400 group-hover:text-blue-600 transition-colors" />, 
         desc: "Lightning-fast connectivity",
         color: "from-blue-500 to-cyan-500"
       },
       { 
-        name: "Neon Grid", 
+        name: "Best Sellers", 
         icon: <Grid className="w-5 h-5 text-emerald-400 group-hover:text-emerald-600 transition-colors" />, 
         desc: "Dynamic power distribution",
         color: "from-emerald-500 to-teal-500"
       },
+      { 
+        name: "Categories", 
+        icon: <Zap className="w-5 h-5 text-blue-400 group-hover:text-blue-600 transition-colors" />, 
+        desc: "Lightning-fast connectivity",
+        color: "from-blue-500 to-cyan-500"
+      },
     ],
     Network: [
       { 
-        name: "Cyber Hub", 
+        name: "Marketing", 
         icon: <Server className="w-5 h-5 text-amber-400 group-hover:text-amber-600 transition-colors" />, 
         desc: "Secure server network",
         color: "from-amber-500 to-orange-500"
       },
       { 
-        name: "Data Stream", 
+        name: "Analytics", 
+        icon: <Zap className="w-5 h-5 text-violet-400 group-hover:text-violet-600 transition-colors" />, 
+        desc: "Real-time data flow",
+        color: "from-violet-500 to-fuchsia-500"
+      },
+      { 
+        name: "Commerce", 
+        icon: <Server className="w-5 h-5 text-amber-400 group-hover:text-amber-600 transition-colors" />, 
+        desc: "Secure server network",
+        color: "from-amber-500 to-orange-500"
+      },
+      { 
+        name: "Insights", 
         icon: <Zap className="w-5 h-5 text-violet-400 group-hover:text-violet-600 transition-colors" />, 
         desc: "Real-time data flow",
         color: "from-violet-500 to-fuchsia-500"
@@ -195,7 +213,7 @@ const Header = () => {
                 <div className="p-1.5 rounded-lg bg-indigo-50 group-hover:bg-indigo-100 transition-colors duration-300">
                   <Cpu className="w-5 h-5 text-indigo-500 group-hover:text-indigo-600 transition-colors" />
                 </div>
-                About
+                Home
               </Link>
 
               {/* Systems Dropdown */}
@@ -211,7 +229,7 @@ const Header = () => {
                   <div className="p-1.5 rounded-lg bg-indigo-50 group-hover:bg-indigo-100 transition-colors duration-300">
                     <Server className="w-5 h-5 text-indigo-500 group-hover:text-indigo-600 transition-colors" />
                   </div>
-                  Systems
+                  Products
                   <ChevronDown
                     className={`w-4 h-4 ml-1 transition-transform duration-300 ${
                       openSubmenu === "Systems" ? "rotate-180 text-indigo-500" : "text-gray-400"
@@ -278,7 +296,7 @@ const Header = () => {
                   <div className="p-1.5 rounded-lg bg-indigo-50 group-hover:bg-indigo-100 transition-colors duration-300">
                     <Network className="w-5 h-5 text-indigo-500 group-hover:text-indigo-600 transition-colors" />
                   </div>
-                  Network
+                  Solutions
                   <ChevronDown
                     className={`w-4 h-4 ml-1 transition-transform duration-300 ${
                       openSubmenu === "Network" ? "rotate-180 text-indigo-500" : "text-gray-400"

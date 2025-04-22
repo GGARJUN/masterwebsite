@@ -20,7 +20,7 @@ const Button20 = () => {
 
     return (
         <div className="w-full p-12 rounded-3xl bg-gradient-to-br from-gray-50 to-gray-100 shadow-2xl">
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12 items-center justify-center">
+      <div className="flex flex-col md:flex-row justify-evenly w-full items-center gap-8">
                 {/* Cosmic Hover Button */}
                 <div className="flex flex-col items-center gap-5">
                     <h1 className="text-xl font-semibold text-gray-900 tracking-wide">Hover Effect</h1>
@@ -41,7 +41,7 @@ const Button20 = () => {
                                     className={`absolute inset-0 bg-[conic-gradient(from_var(--angle),transparent_10%,rgba(255,255,255,0.4)_40%,transparent_90%)] opacity-0 transition-opacity duration-600 ${buttonStates.hover ? 'opacity-100' : ''}`}
                                     style={{ '--angle': buttonStates.hover ? '360deg' : '0deg' }}
                                 />
-                                <span className="absolute inset-0 bg-gradient-to-br from-violet-700 via-indigo-600 to-blue-700" />
+                                <span className="absolute inset-0 bg-gradient-to-br from-indigo-600 to-purple-600" />
                                 <span className={`absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.3)_0%,transparent_70%)] opacity-0 transition-opacity duration-600 ${buttonStates.hover ? 'opacity-100 animate-[sparkle_1.5s_infinite]' : ''}`} />
                             </>
                         )}
@@ -57,7 +57,7 @@ const Button20 = () => {
                         className={`relative h-12 px-8 rounded-xl font-bold text-gray-100 transition-all duration-400 ${buttonStates.focus ? 'scale-[1.04]' : ''}`}
                     >
                         <span className="relative z-10">Focus Me</span>
-                        <span className={`absolute inset-0 bg-gradient-to-br from-fuchsia-600 to-purple-600 rounded-xl ${buttonStates.focus ? 'ring-4 ring-fuchsia-300/40' : ''}`} />
+                        <span className={`absolute inset-0 bg-gradient-to-br from-blue-600 to-cyan-500 rounded-xl ${buttonStates.focus ? 'ring-4 ring-fuchsia-300/40' : ''}`} />
                         {buttonStates.mounted && (
                             <span className={`absolute inset-0 opacity-0 ${buttonStates.focus ? 'opacity-100' : ''}`}>
                                 <NeuralNetwork active={buttonStates.focus} mounted={buttonStates.mounted} />
@@ -78,7 +78,7 @@ const Button20 = () => {
                         <span className="relative z-10 flex items-center gap-3">
                             {buttonStates.active ? 'Ignited' : 'Active'}
                         </span>
-                        <span className="absolute inset-0 bg-gradient-to-br from-cyan-600 to-teal-600 rounded-xl" />
+                        <span className="absolute inset-0 bg-gradient-to-br from-emerald-600 to-teal-500 rounded-xl" />
                         <span className={`absolute top-0 left-0 h-1 bg-white/40 transition-all duration-400 ease-out ${buttonStates.active ? 'w-full' : 'w-0'}`} />
                     </button>
                 </div>
@@ -88,10 +88,10 @@ const Button20 = () => {
                     <h1 className="text-xl font-semibold text-gray-900 tracking-wide">Disabled</h1>
                     <button
                         disabled
-                        className="relative h-12 px-8 rounded-xl font-bold text-gray-500 cursor-not-allowed"
+                        className="relative h-12 px-8 rounded-xl font-bold text-gray-100 cursor-not-allowed"
                     >
                         <span className="relative z-10">Disabled</span>
-                        <span className="absolute inset-0 bg-gray-800/80 rounded-xl" />
+                        <span className="absolute inset-0 bg-gray-300/80 rounded-xl" />
                         <span className="absolute inset-0 bg-gradient-to-br from-gray-900/50 to-gray-800/50 rounded-xl" />
                     </button>
                 </div>
@@ -105,7 +105,7 @@ const Button20 = () => {
                         className="relative h-12 px-8 rounded-xl font-bold text-gray-100 overflow-hidden group"
                     >
                         <span className="relative z-10">Animated</span>
-                        <span className="absolute inset-0 bg-gradient-to-br from-pink-600 via-purple-600 to-blue-600 rounded-xl" />
+                        <span className="absolute inset-0 bg-gradient-to-br from-rose-600 to-pink-600 rounded-xl" />
                         <span className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_0%,rgba(255,255,255,0.25)_60%,transparent_100%)] opacity-100 transition-opacity duration-600" />
                         {buttonStates.mounted && <PulseWave active={buttonStates.animated} />}
                     </button>

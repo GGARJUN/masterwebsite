@@ -98,12 +98,12 @@ const Button17 = () => {
         }
       `}</style>
 
-      <div className="flex flex-col md:flex-row justify-center w-full items-center gap-16">
+<div className="flex flex-col md:flex-row justify-evenly w-full items-center gap-8">
         {/* Hover Button */}
         <div className="flex flex-col items-center gap-4">
           <h1 className="text-lg font-bold text-gray-800 tracking-wider">Hover Effect</h1>
           <button
-            className="group relative overflow-hidden rounded px-8 py-3 h-12 text-sm font-semibold bg-teal-700 text-white shadow-md hover:shadow-2xl transition-all duration-400"
+            className="group relative overflow-hidden rounded px-8 py-3 h-12 text-sm font-semibold bg-gradient-to-br from-indigo-600 to-purple-600 text-white shadow-md hover:shadow-2xl transition-all duration-400"
           >
             <div className="relative z-10 flex items-center justify-between">
               <span className="transition-all duration-400 group-hover:font-extrabold">Hover Me</span>
@@ -123,7 +123,7 @@ const Button17 = () => {
         <div className="flex flex-col items-center gap-4">
           <h1 className="text-lg font-bold text-gray-800 tracking-wider">Focus Effect</h1>
           <button
-            className="group relative overflow-hidden rounded-lg px-8 py-3 h-12 text-sm font-semibold bg-indigo-700 text-white shadow-md focus:shadow-2xl transition-all duration-400 focus:outline-none"
+            className="group relative overflow-hidden rounded-lg px-8 py-3 h-12 text-sm font-semibold bg-gradient-to-br from-blue-600 to-cyan-500 text-white shadow-md focus:shadow-2xl transition-all duration-400 focus:outline-none"
           >
             <div className="relative z-10 flex items-center justify-between focus:animate-tilt">
               <span>Focus Me</span>
@@ -141,7 +141,7 @@ const Button17 = () => {
         <div className="flex flex-col items-center gap-4">
           <h1 className="text-lg font-bold text-gray-800 tracking-wider">Active Effect</h1>
           <button
-            className="group relative overflow-hidden rounded-xl px-8 py-3 h-12 text-sm font-semibold bg-red-700 text-white shadow-md transition-all duration-200"
+            className="group relative overflow-hidden rounded-xl px-8 py-3 h-12 text-sm font-semibold bg-gradient-to-br from-emerald-600 to-teal-500 text-white shadow-md transition-all duration-200"
           >
             <div className="relative z-10 flex items-center justify-between">
               <span>Press Me</span>
@@ -183,7 +183,7 @@ const Button17 = () => {
         <div className="flex flex-col items-center gap-4">
           <h1 className="text-lg font-bold text-gray-800 tracking-wider">Animated</h1>
           <button
-            className="group relative overflow-hidden rounded-3xl px-8 py-3 h-12 text-sm font-semibold bg-lime-600 text-white shadow-md"
+            className="group relative overflow-hidden rounded-3xl px-8 py-3 h-12 text-sm font-semibold bg-gradient-to-br from-rose-600 to-pink-600 text-white shadow-md"
           >
             <div className="relative z-10 flex items-center justify-between">
               <span>Animated</span>

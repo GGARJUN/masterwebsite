@@ -35,7 +35,7 @@ export default function Home() {
       >
         <div className="max-w-7xl mx-auto px-6 lg:px-8 flex items-center justify-between">
           {/* Logo */}
-          <Link href="/" className="flex items-center space-x-3 group">
+          <Link href="/" className="flex items-center space-x-3 group cursor-pointer">
             <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-indigo-600 via-blue-500 to-cyan-400 flex items-center justify-center transform transition-all duration-500 group-hover:scale-110 group-hover:rotate-12 shadow-lg">
               <span className="text-white font-bold text-xl">M</span>
             </div>
@@ -143,8 +143,8 @@ export default function Home() {
           {/* CTA Button */}
           <div className="mt-12 flex items-center justify-center gap-x-6">
             <Link
-              href="/dashboard"
-              className="relative group inline-flex items-center px-6 py-3 text-sm font-semibold text-white rounded-full overflow-hidden shadow-lg transition-all duration-300"
+              href="/dashboard/nav-bar"
+              className="relative group inline-flex cursor-pointer items-center px-6 py-3 text-sm font-semibold text-white rounded-full overflow-hidden shadow-lg transition-all duration-300"
             >
               <span className="absolute inset-0 bg-gradient-to-r from-indigo-600 via-blue-500 to-cyan-400 group-hover:scale-110 transition-transform duration-300"></span>
               <span className="relative z-10 flex items-center gap-2">

@@ -11,35 +11,26 @@ const Header = () => {
 
   const menuItems = [
     { name: "Home", href: "#", submenus: [] },
-    { name: "Solutions", href: "#", submenus: [] },
+
     {
       name: "Products",
       submenus: [
-        { name: "Software", href: "#" },
-        { name: "Hardware", href: "#" },
-        { name: "Services", href: "#" },
-        { name: "Bundles", href: "#" },
+        { name: "All Products", href: "#" },
+        { name: "New Arrivals", href: "#" },
+        { name: "Best Sellers", href: "#" },
+        { name: "Categories", href: "#" },
       ],
     },
     {
-      name: "Resources",
+      name: "Solutions",
       submenus: [
-        { name: "Blog", href: "#" },
-        { name: "Guides", href: "#" },
-        { name: "Webinars", href: "#" },
-        { name: "Docs", href: "#" },
+        { name: "Marketing", href: "#" },
+        { name: "Analytics", href: "#" },
+        { name: "Commerce", href: "#" },
+        { name: "Insights", href: "#" },
       ],
     },
-    {
-      name: "Company",
-      submenus: [
-        { name: "About Us", href: "#" },
-        { name: "Team", href: "#" },
-        { name: "Careers", href: "#" },
-        { name: "Contact", href: "#" },
-      ],
-    },
-    { name: "Support", href: "#", submenus: [] },
+    { name: "Resources", href: "#", submenus: [] },
     { name: "Pricing", href: "#", submenus: [] },
   ];
 
@@ -58,11 +49,10 @@ const Header = () => {
   return (
     <header
       ref={headerRef}
-      className={`fixed w-full top-0 px-4 sm:px-6 lg:px-8 z-50 transition-all duration-700 ease-in-out ${
-        isScrolled
+      className={`fixed w-full top-0 px-4 sm:px-6 lg:px-8 z-50 transition-all duration-700 ease-in-out ${isScrolled
           ? "bg-gradient-to-r from-teal-600/80 via-cyan-600/80 to-blue-600/80 backdrop-blur-md rounded-full shadow-[0_8px_32px_rgba(0,0,0,0.2)] mt-4"
           : "bg-gradient-to-r from-teal-600 via-cyan-600 to-blue-600 shadow-md"
-      }`}
+        }`}
     >
       <nav className="max-w-7xl mx-auto">
         <div className="flex items-center justify-between h-16 px-4">
@@ -93,13 +83,12 @@ const Header = () => {
                           <Link
                             key={item.name}
                             href={item.href}
-                            className={`block px-4 py-3 relative overflow-hidden group/item transition-all duration-300 hover:bg-gradient-to-r hover:from-teal-500/80 hover:to-blue-500/80 hover:text-white hover:pl-6 ${
-                              index === 0
+                            className={`block px-4 py-3 relative overflow-hidden group/item transition-all duration-300 hover:bg-gradient-to-r hover:from-teal-500/80 hover:to-blue-500/80 hover:text-white hover:pl-6 ${index === 0
                                 ? "rounded-t-xl"
                                 : index === menu.submenus.length - 1
-                                ? "rounded-b-xl"
-                                : ""
-                            }`}
+                                  ? "rounded-b-xl"
+                                  : ""
+                              }`}
                           >
                             <div className="font-semibold relative z-10 flex items-center">
                               <span className="w-2 h-2 bg-teal-400 rounded-full mr-2 opacity-0 group-hover/item:opacity-100 transition-opacity duration-300"></span>
@@ -158,9 +147,8 @@ const Header = () => {
 
         {/* Mobile Menu */}
         <div
-          className={`lg:hidden fixed inset-0 bg-gradient-to-br from-teal-600/95 via-cyan-600/95 to-blue-600/95 transform transition-all duration-700 ease-in-out ${
-            isMobileMenuOpen ? "translate-y-0 opacity-100" : "translate-y-full opacity-0"
-          }`}
+          className={`lg:hidden fixed inset-0 bg-gradient-to-br from-teal-600/95 via-cyan-600/95 to-blue-600/95 transform transition-all duration-700 ease-in-out ${isMobileMenuOpen ? "translate-y-0 opacity-100" : "translate-y-full opacity-0"
+            }`}
           style={{ top: isScrolled ? "80px" : "64px" }}
         >
           <div className="flex flex-col h-full justify-center items-center space-y-6 px-4">
@@ -176,18 +164,16 @@ const Header = () => {
                         {menu.name}
                       </span>
                       <ChevronDownIcon
-                        className={`w-6 h-6 ml-3 transform transition-all duration-500 ${
-                          openMobileSubmenu === menu.name ? "rotate-180 scale-110" : ""
-                        }`}
+                        className={`w-6 h-6 ml-3 transform transition-all duration-500 ${openMobileSubmenu === menu.name ? "rotate-180 scale-110" : ""
+                          }`}
                       />
                       <span className="absolute inset-0 bg-white/10 rounded-full scale-0 group-hover:scale-100 transition-transform duration-500 ease-out origin-center"></span>
                     </button>
                     <div
-                      className={`mt-4 space-y-3 transition-all duration-700 ease-in-out overflow-hidden ${
-                        openMobileSubmenu === menu.name
+                      className={`mt-4 space-y-3 transition-all duration-700 ease-in-out overflow-hidden ${openMobileSubmenu === menu.name
                           ? "max-h-[400px] opacity-100"
                           : "max-h-0 opacity-0"
-                      }`}
+                        }`}
                     >
                       {menu.submenus.map((item) => (
                         <Link

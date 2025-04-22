@@ -19,8 +19,8 @@ const Button3 = () => {
   };
 
   return (
-    <div className="w-full p-12 bg-gradient-to-br from-gray-50 to-gray-100 rounded-3xl shadow-xl">
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 items-center justify-center">
+    <div className="w-full p-12  rounded-3xl shadow-xl">
+      <div className="flex flex-col md:flex-row justify-evenly w-full items-center gap-8">
         
         {/* Quantum Hover Button */}
         <div className="flex flex-col items-center gap-5">
@@ -28,7 +28,7 @@ const Button3 = () => {
           <button
             onMouseEnter={() => handleStateChange('hover', true)}
             onMouseLeave={() => handleStateChange('hover', false)}
-            className="relative h-12 px-8 rounded-xl font-bold text-white overflow-hidden transition-all duration-500 ease-quint"
+            className="relative h-12 px-8 rounded-xl font-bold text-white overflow-hidden transition-all duration-500 ease-quint cursor-pointer"
           >
             <span className="relative z-10 flex items-center gap-3">
               <span className={`transition-all duration-500 ${buttonStates.hover ? 'rotate-[360deg]' : 'rotate-0'}`}>
@@ -54,7 +54,7 @@ const Button3 = () => {
           <button
             onFocus={() => handleStateChange('focus', true)}
             onBlur={() => handleStateChange('focus', false)}
-            className={`relative h-12 px-8 rounded-xl font-bold text-white transition-all duration-300 ${buttonStates.focus ? 'scale-[1.03]' : ''}`}
+            className={`relative h-12 px-8 rounded-xl font-bold text-white transition-all duration-300 cursor-pointer${buttonStates.focus ? 'scale-[1.03]' : ''}`}
           >
             <span className="relative z-10">Focus Me</span>
             <span className={`absolute inset-0 bg-gradient-to-br from-blue-600 to-cyan-500 rounded-xl ${buttonStates.focus ? 'ring-4 ring-cyan-300/50' : ''}`} />
@@ -73,7 +73,7 @@ const Button3 = () => {
             onMouseDown={() => handleStateChange('active', true)}
             onMouseUp={() => handleStateChange('active', false)}
             onMouseLeave={() => handleStateChange('active', false)}
-            className={`relative h-12 px-8 rounded-xl font-bold text-white transition-transform duration-150 ${buttonStates.active ? 'scale-[0.97]' : ''}`}
+            className={`relative h-12 px-8 rounded-xl font-bold text-white transition-transform duration-150 cursor-pointer${buttonStates.active ? 'scale-[0.97]' : ''}`}
           >
             <span className="relative z-10 flex items-center gap-3">
               {buttonStates.active ? 'Engaged' : 'Activate'}
@@ -85,7 +85,8 @@ const Button3 = () => {
 
         {/* Disabled State */}
         <div className="flex flex-col items-center gap-5">
-          <h1 className="text-xl font-semibold text-gray-800">Disabled</h1>
+          <h1 className="text-xl font-semibold text-gray-800">Disabled State
+          </h1>
           <button
             disabled
             className="relative h-12 px-8 rounded-xl font-bold text-gray-400 cursor-not-allowed"
@@ -102,7 +103,7 @@ const Button3 = () => {
           <button
             onMouseEnter={() => handleStateChange('animated', true)}
             onMouseLeave={() => handleStateChange('animated', true)}
-            className="relative h-12 px-8 rounded-xl font-bold text-white overflow-hidden group"
+            className="relative h-12 px-8 rounded-xl font-bold text-white overflow-hidden group cursor-pointer"
           >
             <span className="relative z-10">Animated</span>
             <span className="absolute inset-0 bg-gradient-to-br from-rose-600 to-pink-600 rounded-xl" />

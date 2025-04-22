@@ -14,17 +14,17 @@ const Button5 = () => {
 
   return (
     <div className="w-full p-12 rounded-3xl bg-gradient-to-tr from-zinc-50 to-slate-100 shadow-2xl">
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12 items-center justify-center">
+      <div className="flex flex-col md:flex-row justify-evenly w-full items-center gap-8">
         {/* Hover - Celestial Ray */}
         <div className="flex flex-col items-center gap-5">
-          <h1 className="text-xl font-semibold text-gray-900">Hover</h1>
+          <h1 className="text-xl font-semibold text-gray-900">Hover Effect</h1>
           <button
             onMouseEnter={() => setHovered(true)}
             onMouseLeave={() => setHovered(false)}
-            className="relative h-12 px-8 rounded-xl font-bold text-white overflow-hidden transition-all duration-500"
+            className="relative h-12 px-8 rounded-xl font-bold text-white overflow-hidden transition-all duration-500 cursor-pointer"
           >
-            <span className="relative z-10">Hover</span>
-            <span className="absolute inset-0 bg-gradient-to-r from-indigo-700 via-purple-700 to-pink-700 transition-opacity duration-500" />
+            <span className="relative z-10">Hover Me</span>
+            <span className="absolute inset-0 bg-gradient-to-br from-indigo-600 to-purple-600 transition-opacity duration-500" />
             {mounted && (
               <span
                 className={`absolute inset-0 bg-[radial-gradient(circle,rgba(255,255,255,0.3)_0%,transparent_70%)] transition-opacity duration-500 ${
@@ -37,16 +37,17 @@ const Button5 = () => {
 
         {/* Focus - Galactic Aura */}
         <div className="flex flex-col items-center gap-5">
-          <h1 className="text-xl font-semibold text-gray-900">Focus</h1>
+          <h1 className="text-xl font-semibold text-gray-900">Focus Effect
+          </h1>
           <button
             onFocus={() => setFocused(true)}
             onBlur={() => setFocused(false)}
-            className={`relative h-12 px-8 rounded-xl font-bold text-white transition-all duration-300 focus:outline-none ${
+            className={`relative h-12 px-8 rounded-xl font-bold text-white transition-all duration-300 focus:outline-none cursor-pointer${
               focused ? "ring-4 ring-blue-300/40 scale-105" : ""
             }`}
           >
-            <span className="relative z-10">Focus</span>
-            <span className="absolute inset-0 bg-gradient-to-br from-cyan-600 to-blue-700 rounded-xl" />
+            <span className="relative z-10">Focus Me</span>
+            <span className="absolute inset-0 bg-gradient-to-br from-blue-600 to-cyan-500 rounded-xl" />
             {mounted && (
               <span
                 className={`absolute inset-0 transition-opacity duration-500 ${
@@ -66,11 +67,11 @@ const Button5 = () => {
     onMouseDown={() => setActive(true)}
     onMouseUp={() => setActive(false)}
     onMouseLeave={() => setActive(false)}
-    className={`relative h-12 px-8 rounded-2xl font-bold overflow-hidden transition-all duration-300 ${
+    className={`relative h-12 px-8 rounded-2xl font-bold overflow-hidden transition-all duration-300 cursor-pointer${
       active ? "shadow-inner" : "shadow-lg"
     }`}
   >
-    <span className="relative z-10 flex items-center gap-2">
+    <span className="relative z-10 flex items-center gap-2 text-white">
       {active ? (
         <>
           <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -93,7 +94,7 @@ const Button5 = () => {
     
     {/* Pressure-sensitive fill layer */}
     <span 
-      className={`absolute bottom-0 left-0 right-0 h-full bg-gradient-to-t from-green-400 to-emerald-500 rounded-2xl transition-all duration-300 ease-[cubic-bezier(0.68,-0.6,0.32,1.6)] ${
+      className={`absolute bottom-0 left-0 right-0 h-full bg-gradient-to-br from-emerald-600 to-teal-500 rounded-2xl transition-all duration-300 ease-[cubic-bezier(0.68,-0.6,0.32,1.6)] ${
         active ? "h-full" : "h-0"
       }`}
     />
@@ -116,14 +117,15 @@ const Button5 = () => {
 
         {/* Disabled - Void Zone */}
         <div className="flex flex-col items-center gap-5">
-          <h1 className="text-xl font-semibold text-gray-900">Disabled</h1>
+          <h1 className="text-xl font-semibold text-gray-900">Disabled State
+          </h1>
           <button
             disabled
             className="relative h-12 px-8 rounded-xl font-bold text-gray-400 cursor-not-allowed"
           >
             <span className="relative z-10">Disabled</span>
             <span className="absolute inset-0 bg-gradient-to-br from-gray-800/80 to-gray-700/80 rounded-xl" />
-            <span className="absolute inset-0 bg-gray-900/40 rounded-xl" />
+            <span className="absolute inset-0 bg-gray-200 rounded-xl" />
           </button>
         </div>
 
@@ -132,7 +134,7 @@ const Button5 = () => {
   <button
     onMouseEnter={() => setAnimated(true)}
     onMouseLeave={() => setAnimated(false)}
-    className="relative h-12 px-8 rounded-2xl font-bold text-white overflow-hidden group transition-all duration-500"
+    className="relative h-12 px-8 rounded-2xl font-bold text-white overflow-hidden group transition-all duration-500 cursor-pointer"
   >
     <span className="relative z-10 flex items-center gap-2">
 
@@ -140,7 +142,7 @@ const Button5 = () => {
     </span>
     
     {/* Base gradient */}
-    <span className="absolute inset-0 bg-gradient-to-br from-cyan-500 to-blue-600 rounded-2xl" />
+    <span className="absolute inset-0 bg-gradient-to-br from-rose-600 to-pink-600 rounded-2xl" />
     
     {/* Liquid waves */}
     <span className={`absolute -bottom-1 left-0 right-0 h-12 bg-white/20 rounded-full transition-all duration-1000 ease-[cubic-bezier(0.68,-0.6,0.32,1.6)] ${

@@ -27,15 +27,43 @@ const Button10 = () => {
           0% { transform: rotate(0deg) translateX(15px) rotate(0deg); }
           100% { transform: rotate(360deg) translateX(15px) rotate(-360deg); }
         }
+
+                @keyframes rippleEffect {
+          0% {
+            transform: translate(-50%, -50%) scale(0);
+            opacity: 1;
+          }
+          100% {
+            transform: translate(-50%, -50%) scale(4);
+            opacity: 0;
+          }
+        }
+        .animate-rippleEffect {
+          animation: rippleEffect 0.6s ease-out;
+        }
+                  @keyframes glowBorder {
+          0% {
+            box-shadow: 0 0 5px rgba(251, 113, 133, 0.5), 0 0 10px rgba(251, 113, 133, 0.3);
+          }
+          50% {
+            box-shadow: 0 0 10px rgba(251, 113, 133, 0.7), 0 0 20px rgba(251, 113, 133, 0.5);
+          }
+          100% {
+            box-shadow: 0 0 5px rgba(251, 113, 133, 0.5), 0 0 10px rgba(251, 113, 133, 0.3);
+          }
+        }
+        .animate-glowBorder {
+          animation: glowBorder 1.5s ease-in-out infinite;
+        }
       `}</style>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 items-center justify-center">
+<div className="flex flex-col md:flex-row justify-evenly w-full items-center gap-8">
         
         {/* Hover Button - Floating Particles */}
         <div className="flex flex-col items-center gap-6">
           <h1 className="text-xl font-semibold text-gray-800">Hover Effect</h1>
           <button 
-            className="relative h-12 px-8 rounded-xl font-bold text-white bg-gradient-to-br from-blue-600 to-indigo-700 shadow-lg group overflow-hidden transition-all duration-500"
+            className="cursor-pointer relative h-12 px-8 rounded-xl font-bold text-white bg-gradient-to-br from-indigo-600 to-purple-600 shadow-lg group overflow-hidden transition-all duration-500"
             onMouseEnter={() => setActiveButton('hover')}
             onMouseLeave={() => setActiveButton(null)}
           >
@@ -61,32 +89,38 @@ const Button10 = () => {
 
         {/* Focus Button - Pulse Glow */}
         <div className="flex flex-col items-center gap-6">
-          <h1 className="text-xl font-semibold text-gray-800">Focus Effect</h1>
-          <button 
-            className="relative h-12 px-8 rounded-xl font-bold text-white bg-gradient-to-br from-emerald-600 to-teal-700 shadow-lg focus:outline-none transition-all duration-300"
-            onFocus={() => setActiveButton('focus')}
-            onBlur={() => setActiveButton(null)}
-          >
-            <span className="relative z-10">Focus Me</span>
-            <span className="absolute inset-0 rounded-xl border-2 border-transparent focus:border-white/40 focus:animate-pulseGlow"></span>
-          </button>
-        </div>
+      <h1 className="text-xl font-semibold text-gray-800">Focus Effect</h1>
+      <button
+        className="cursor-pointer relative h-12 px-8 rounded-lg font-bold text-white bg-gradient-to-br from-blue-600 to-cyan-500 shadow-md focus:outline-none transition-all duration-300 hover:shadow-lg hover:scale-105"
+        onFocus={() => setActiveButton("focus")}
+        onBlur={() => setActiveButton(null)}
+      >
+        <span className="relative z-10">Focus Me</span>
+        {activeButton === "focus" && (
+          <span className="absolute inset-0 rounded-lg border-2 border-blue-300/50 animate-glowBorder" />
+        )}
+      </button>
+    </div>
 
         {/* Active Button - Liquid Ripple */}
         <div className="flex flex-col items-center gap-6">
-          <h1 className="text-xl font-semibold text-gray-800">Active Effect</h1>
-          <button 
-            className="relative h-12 px-8 rounded-xl font-bold text-white bg-gradient-to-br from-rose-600 to-pink-700 shadow-lg overflow-hidden active:animate-pressDown"
-            onMouseDown={() => setActiveButton('active')}
-            onMouseUp={() => setActiveButton(null)}
-          >
-            <span className="relative z-10">Press Me</span>
-            {activeButton === 'active' && (
-              <span className="absolute top-1/2 left-1/2 w-4 h-4 bg-white/40 rounded-full animate-liquidRipple" 
-                    style={{ transform: 'translate(-50%, -50%)' }} />
-            )}
-          </button>
-        </div>
+      <h1 className="text-xl font-semibold text-gray-800">Active Effect</h1>
+      <button
+        className="cursor-pointer relative h-12 px-8 rounded-lg font-bold text-white bg-gradient-to-br from-emerald-600 to-teal-500 border-2 border-purple-400/50 shadow-md overflow-hidden transition-all duration-300 hover:shadow-lg active:scale-95"
+        onMouseDown={() => setActiveButton("active")}
+        onMouseUp={() => setActiveButton(null)}
+        onTouchStart={() => setActiveButton("active")}
+        onTouchEnd={() => setActiveButton(null)}
+      >
+        <span className="relative z-10">Click Me</span>
+        {activeButton === "active" && (
+          <span
+            className="absolute top-1/2 left-1/2 w-6 h-6 bg-indigo-300/50 rounded-full animate-rippleEffect"
+            style={{ transform: "translate(-50%, -50%)" }}
+          />
+        )}
+      </button>
+    </div>
 
         {/* Disabled Button */}
         <div className="flex flex-col items-center gap-6">
@@ -104,7 +138,7 @@ const Button10 = () => {
         <div className="flex flex-col items-center gap-6">
           <h1 className="text-xl font-semibold text-gray-800">Animated</h1>
           <button 
-            className="relative h-12 px-8 rounded-xl font-bold text-white bg-gradient-to-br from-purple-600 to-violet-700 shadow-lg group"
+            className="cursor-pointer relative h-12 px-8 rounded-xl font-bold text-white bg-gradient-to-br from-rose-600 to-pink-600 shadow-lg group"
           >
             <span className="relative z-10">Animated</span>
             <span className="absolute top-1/2 left-1/2 w-3 h-3 bg-white/40 rounded-full animate-orbit"></span>

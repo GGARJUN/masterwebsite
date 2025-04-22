@@ -25,7 +25,7 @@ const Button21 = () => {
   };
 
   return (
-    <div className="w-full p-12 bg-gradient-to-br from-gray-900 to-gray-800 shadow-inner">
+    <div className="w-full p-12  shadow-inner">
       <style jsx global>{`
         @keyframes float {
           0%, 100% { transform: translateY(0); }
@@ -57,7 +57,7 @@ const Button21 = () => {
         .animate-glitch { animation: glitch 0.3s linear infinite; }
       `}</style>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6">
+<div className="flex flex-col md:flex-row justify-evenly w-full items-center gap-8">
         {/* Hover Button - Neon Border Effect */}
         <div className="flex flex-col items-center gap-3">
           <h2 className="text-sm font-medium text-gray-400 tracking-wider">HOVER EFFECT</h2>
@@ -76,7 +76,7 @@ const Button21 = () => {
             }}
           >
             <div className="relative z-10 flex items-center justify-center gap-2">
-              <span>Neon</span>
+              <span>Hover Me</span>
               <ArrowRight className={`w-4 h-4 transition-transform ${states.hover ? 'translate-x-2' : ''}`} />
             </div>
             <div className={`
@@ -106,7 +106,7 @@ const Button21 = () => {
             }}
           >
             <div className="relative z-10 flex items-center justify-center gap-2">
-              <span>Expand</span>
+              <span>Focus Me</span>
               <Eye className={`w-4 h-4 transition-transform ${states.focus ? 'rotate-12' : ''}`} />
             </div>
             <div className={`
@@ -135,7 +135,7 @@ const Button21 = () => {
             }}
           >
             <div className="relative z-10 flex items-center justify-center gap-2">
-              <span>Ripple</span>
+              <span>Press Me</span>
               <Zap className={`w-4 h-4 transition-transform ${states.active ? 'scale-110' : ''}`} />
             </div>
             {states.ripple.active && (
@@ -192,7 +192,7 @@ const Button21 = () => {
             }}
           >
             <div className="relative z-10 flex items-center justify-center gap-2">
-              <span>Pulse</span>
+              <span>Animated</span>
               <Sparkles className="w-4 h-4 animate-float" />
             </div>
             <div className={`

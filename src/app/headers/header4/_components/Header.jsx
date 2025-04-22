@@ -25,22 +25,33 @@ const Header = () => {
 
   const navItems = [
     {
-      name: "Our Solutions",
+      name: "Home",
+    },
+    {
+      name: "Product",
       subItems: [
-        { name: "Lifesigns Nexus", desc: "Unified platform for real-time patient monitoring across hospitals, ambulances, and home.", href: "#", image: dummyImages.nexus },
-        { name: "Lifesigns Bolt", desc: "Integrated solution for patient monitoring by hospitals.", href: "#", image: dummyImages.bolt },
-        { name: "Smart Ambulance", desc: "Smart Monitoring solutions for emergency care.", href: "#", image: dummyImages.ambulance },
-        { name: "At Home", desc: "Remote monitoring solutions for home care.", href: "#", image: dummyImages.home },
+        { name: "All Products", desc: "Unified platform for real-time patient monitoring across hospitals, ambulances, and home.", href: "#", image: dummyImages.nexus },
+        { name: "New Arrivals", desc: "Integrated solution for patient monitoring by hospitals.", href: "#", image: dummyImages.bolt },
+        { name: "Best Sellers", desc: "Smart Monitoring solutions for emergency care.", href: "#", image: dummyImages.ambulance },
+        { name: "Categories", desc: "Remote monitoring solutions for home care.", href: "#", image: dummyImages.home },
       ],
     },
     {
-      name: "Company",
+      name: "Solution",
       subItems: [
-        { name: "About Us", desc: "Learn more about our mission and team.", href: "#", image: dummyImages.about },
-        { name: "Careers", desc: "Join our innovative team.", href: "#", image: dummyImages.careers },
-        { name: "News", desc: "Stay updated with our latest news.", href: "#", image: dummyImages.news },
+        { name: "Marketing", desc: "Learn more about our mission and team.", href: "#", image: dummyImages.about },
+        { name: "Analytics", desc: "Join our innovative team.", href: "#", image: dummyImages.careers },
+        { name: "Commerce", desc: "Stay updated with our latest news.", href: "#", image: dummyImages.news },
+        { name: "Insights", desc: "Smart Monitoring solutions for emergency care.", href: "#", image: dummyImages.ambulance },
       ],
     },
+    {
+      name: "Resources",
+    },
+    {
+      name: "Pricing",
+    },
+
     { name: "Get a Demo", href: "#", isButton: true },
   ];
 
@@ -86,20 +97,18 @@ const Header = () => {
       />
 
       <header
-        className={`fixed left-0 right-0 z-40 transition-all duration-300 ${
-          isScrolled
+        className={`fixed left-0 right-0 z-40 transition-all duration-300 ${isScrolled
             ? "bg-gray-900/95 backdrop-blur-xl shadow-lg py-3"
             : "bg-transparent py-5"
-        } ${isHeaderVisible ? "top-0" : "-top-20"}`}
+          } ${isHeaderVisible ? "top-0" : "-top-20"}`}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
           <Link href="/" className="group relative flex items-center">
             <div className="relative w-12 h-12">
               <div className="absolute inset-0 rounded-full bg-gradient-to-tr from-teal-500 via-cyan-600 to-blue-600 flex items-center justify-center transform transition-all duration-300 group-hover:scale-110 group-hover:rotate-12 shadow-lg">
                 <span
-                  className={`font-extrabold text-2xl tracking-tight transition-colors duration-300 ${
-                    isScrolled ? "text-white" : "text-gray-900"
-                  } group-hover:text-teal-200`}
+                  className={`font-extrabold text-2xl tracking-tight transition-colors duration-300 ${isScrolled ? "text-white" : "text-gray-900"
+                    } group-hover:text-teal-200`}
                 >
                   M
                 </span>
@@ -124,15 +133,13 @@ const Header = () => {
                 </defs>
               </svg>
               <div
-                className={`absolute w-2 h-2 bg-teal-400 rounded-full top-0 left-1/2 -translate-x-1/2 transition-all duration-300 ${
-                  isScrolled ? "animate-orbit" : "opacity-0"
-                }`}
+                className={`absolute w-2 h-2 bg-teal-400 rounded-full top-0 left-1/2 -translate-x-1/2 transition-all duration-300 ${isScrolled ? "animate-orbit" : "opacity-0"
+                  }`}
               />
             </div>
             <span
-              className={`ml-3 text-xl font-semibold hidden sm:block transition-colors duration-300 ${
-                isScrolled ? "text-white" : "text-gray-900"
-              } group-hover:text-teal-200`}
+              className={`ml-3 text-xl font-semibold hidden sm:block transition-colors duration-300 ${isScrolled ? "text-white" : "text-gray-900"
+                } group-hover:text-teal-200`}
             >
               Master Site
             </span>
@@ -155,9 +162,8 @@ const Header = () => {
                   </Link>
                 ) : (
                   <button
-                    className={`flex items-center px-4 py-2 text-sm font-medium transition-all duration-300 ${
-                      isScrolled ? "text-white hover:text-teal-300" : "text-gray-900 hover:text-teal-600"
-                    }`}
+                    className={`flex items-center px-4 py-2 text-sm font-medium transition-all duration-300 ${isScrolled ? "text-white hover:text-teal-300" : "text-gray-900 hover:text-teal-600"
+                      }`}
                   >
                     {item.name}
                     {item.subItems && (
@@ -169,7 +175,7 @@ const Header = () => {
                   </button>
                 )}
                 {item.subItems && activeDropdown === item.name && (
-                  <div 
+                  <div
                     className="absolute top-[100%] left-1/2 -translate-x-1/2 mt-2 w-[28rem] bg-white rounded-xl shadow-2xl border border-gray-100/50 overflow-hidden animate-fadeIn"
                     onMouseEnter={() => handleMouseEnter(item.name)}
                     onMouseLeave={handleMouseLeave}
@@ -236,9 +242,8 @@ const Header = () => {
                     >
                       {item.name}
                       <ChevronDown
-                        className={`w-5 h-5 transition-transform duration-300 ${
-                          activeDropdown === item.name ? "rotate-180" : ""
-                        }`}
+                        className={`w-5 h-5 transition-transform duration-300 ${activeDropdown === item.name ? "rotate-180" : ""
+                          }`}
                       />
                     </button>
                     {activeDropdown === item.name && (
@@ -267,11 +272,10 @@ const Header = () => {
                 ) : (
                   <Link
                     href={item.href}
-                    className={`block p-4 ${
-                      item.isButton
+                    className={`block p-4 ${item.isButton
                         ? "bg-gradient-to-r from-teal-500 to-blue-600 text-white m-2 rounded-lg"
                         : "text-gray-900 hover:bg-gray-50"
-                    }`}
+                      }`}
                     onClick={() => setIsMobileMenuOpen(false)}
                   >
                     {item.name}

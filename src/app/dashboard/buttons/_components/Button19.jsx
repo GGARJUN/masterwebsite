@@ -2,7 +2,7 @@ import React from 'react';
 
 const Button19 = () => {
   return (
-    <div className="w-full p-8 bg-gradient-to-br from-gray-950 to-gray-900 shadow-2xl">
+    <div className="w-full p-8  shadow-2xl">
       <style jsx global>{`
         @keyframes hologram {
           0%, 100% { opacity: 0.7; transform: skew(0deg); }
@@ -56,12 +56,12 @@ const Button19 = () => {
         }
       `}</style>
 
-      <div className="flex flex-col md:flex-row justify-evenly w-full items-center gap-10">
+<div className="flex flex-col md:flex-row justify-evenly w-full items-center gap-8">
         {/* Hover Button - Holographic Effect */}
         <div className="flex flex-col items-center gap-5">
           <h1 className="text-sm font-mono text-cyan-400 tracking-widest">HOVER EFFECT</h1>
           <button className="relative h-12 px-8 bg-gradient-to-r from-cyan-900/50 to-teal-900/50 text-cyan-200 font-mono text-sm border border-cyan-500/50 hologram glow-overlay transform transition-all duration-400 hover:shadow-[0_0_25px_rgba(0,255,204,0.7)] hover:-translate-y-1 hover:bg-gradient-to-r hover:from-cyan-800/70 hover:to-teal-800/70">
-            <span className="relative z-10">Hologram</span>
+            <span className="relative z-10">Hover Me</span>
             <span className="absolute inset-0 bg-cyan-500/20 opacity-0 group-hover:opacity-100 transition-opacity duration-400"></span>
           </button>
         </div>
@@ -70,7 +70,7 @@ const Button19 = () => {
         <div className="flex flex-col items-center gap-5">
           <h1 className="text-sm font-mono text-cyan-400 tracking-widest">FOCUS EFFECT</h1>
           <button className="relative h-12 px-8 bg-gradient-to-r from-purple-900/50 to-indigo-900/50 text-purple-200 font-mono text-sm border border-purple-500/50 transform transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-purple-400/50 focus:scale-105 focus:bg-gradient-to-r focus:from-purple-800/70 focus:to-indigo-800/70">
-            <span className="relative z-10">Neon</span>
+            <span className="relative z-10">Focus Me</span>
             <span className="absolute inset-0 bg-purple-500/20 opacity-0 focus:opacity-100 transition-opacity duration-300"></span>
           </button>
         </div>
@@ -79,7 +79,7 @@ const Button19 = () => {
         <div className="flex flex-col items-center gap-5">
           <h1 className="text-sm font-mono text-cyan-400 tracking-widest">ACTIVE EFFECT</h1>
           <button className="relative h-12 px-8 bg-gradient-to-r from-emerald-900/50 to-green-900/50 text-emerald-200 font-mono text-sm border border-emerald-500/50 transform transition-all duration-150 active:scale-90 active:shadow-inner active:bg-gradient-to-r active:from-emerald-800/70 active:to-green-800/70">
-            <span className="relative z-10">Kinetic</span>
+            <span className="relative z-10">Press Me</span>
             <span className="absolute inset-0 bg-emerald-500/30 opacity-0 active:opacity-100 transition-opacity duration-150"></span>
           </button>
         </div>
@@ -91,8 +91,8 @@ const Button19 = () => {
             disabled
             className="relative h-12 px-8 bg-gray-900/50 text-gray-500 font-mono text-sm border border-gray-700/50 cursor-not-allowed opacity-75"
           >
-            <span className="relative z-10">Offline</span>
-            <span className="absolute inset-0 bg-gray-700/50 animate-flicker"></span>
+            <span className="relative z-10">Disabled</span>
+            <span className="absolute inset-0 bg-gray-100 animate-flicker"></span>
           </button>
         </div>
 
@@ -100,7 +100,7 @@ const Button19 = () => {
         <div className="flex flex-col items-center gap-5">
           <h1 className="text-sm font-mono text-cyan-400 tracking-widest">ANIMATED</h1>
           <button className="relative h-12 px-8 wave-bg text-rose-200 font-mono text-sm border border-rose-500/50 shadow-lg hover:shadow-rose-400/30 glow-overlay">
-            <span className="relative z-10">Wave</span>
+            <span className="relative z-10">Animated</span>
             <span className="absolute inset-0 bg-rose-500/20 opacity-0 hover:opacity-100 transition-opacity duration-400"></span>
           </button>
         </div>

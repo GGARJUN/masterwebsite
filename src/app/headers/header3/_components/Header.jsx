@@ -16,24 +16,24 @@ const Header = () => {
       name: "Products",
       href: "#",
       subItems: [
-        { name: "All Products", href: "/products" },
-        { name: "New Arrivals", href: "/products/new" },
-        { name: "Best Sellers", href: "/products/bestsellers" },
-        { name: "Categories", href: "/categories" },
+        { name: "All Products", href: "/" },
+        { name: "New Arrivals", href: "/" },
+        { name: "Best Sellers", href: "/" },
+        { name: "Categories", href: "/" },
       ],
     },
     {
       name: "Solutions",
       href: "#",
       subItems: [
-        { name: "Marketing", href: "/solutions/marketing" },
-        { name: "Analytics", href: "/solutions/analytics" },
-        { name: "Commerce", href: "/solutions/commerce" },
-        { name: "Insights", href: "/solutions/insights" },
+        { name: "Marketing", href: "/" },
+        { name: "Analytics", href: "/" },
+        { name: "Commerce", href: "/" },
+        { name: "Insights", href: "/" },
       ],
     },
-    { name: "Resources", href: "/resources" },
-    { name: "Pricing", href: "/pricing" },
+    { name: "Resources", href: "/" },
+    { name: "Pricing", href: "/" },
   ];
 
   // Scroll handling with progress and dynamic effects

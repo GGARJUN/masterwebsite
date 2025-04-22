@@ -16,22 +16,24 @@ const Header = () => {
       name: "Products",
       href: "#",
       subItems: [
-        { name: "All Products", href: "/products" },
-        { name: "New Arrivals", href: "/products/new" },
-        { name: "Best Sellers", href: "/products/bestsellers" },
+        { name: "All Products", href: "/" },
+        { name: "New Arrivals", href: "/" },
+        { name: "Best Sellers", href: "/" },
+        { name: "Categories", href: "/" },
       ],
     },
     {
       name: "Solutions",
       href: "#",
       subItems: [
-        { name: "Marketing", href: "/solutions/marketing" },
-        { name: "Analytics", href: "/solutions/analytics" },
-        { name: "Commerce", href: "/solutions/commerce" },
+        { name: "Marketing", href: "/" },
+        { name: "Analytics", href: "/" },
+        { name: "Commerce", href: "/" },
+        { name: "Insights", href: "/" },
       ],
     },
-    { name: "Resources", href: "/resources" },
-    { name: "Contact", href: "/contact" },
+    { name: "Resources", href: "/" },
+    { name: "Pricing", href: "/" },
   ];
 
   // Track cursor position and handle ripple effect

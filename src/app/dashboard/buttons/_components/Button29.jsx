@@ -106,12 +106,12 @@ const Button29 = () => {
         }
       `}</style>
 
-      <div className="flex flex-col md:flex-row justify-center w-full items-center gap-16">
+<div className="flex flex-col md:flex-row justify-evenly w-full items-center gap-8">
         {/* Hover Button */}
         <div className="flex flex-col items-center gap-4">
           <h1 className="text-lg font-bold text-gray-800 tracking-wider">Hover Effect</h1>
           <button
-            className="group relative overflow-hidden rounded px-8 py-3 h-12 text-sm font-semibold bg-emerald-800 text-white shadow-lg hover:shadow-[0_0_25px_rgba(16,185,129,0.7)] transition-all duration-500"
+            className="group relative overflow-hidden rounded px-8 py-3 h-12 text-sm font-semibold bg-gradient-to-br from-indigo-600 to-purple-600 text-white shadow-lg hover:shadow-[0_0_25px_rgba(16,185,129,0.7)] transition-all duration-500"
           >
             <div className="relative z-10 flex items-center justify-between">
               <span className="transition-all duration-500 group-hover:tracking-wider">Hover Me</span>
@@ -131,7 +131,7 @@ const Button29 = () => {
         <div className="flex flex-col items-center gap-4">
           <h1 className="text-lg font-bold text-gray-800 tracking-wider">Focus Effect</h1>
           <button
-            className="group relative overflow-hidden rounded-lg px-8 py-3 h-12 text-sm font-semibold bg-blue-900 text-white shadow-lg focus:shadow-[0_0_25px_rgba(59,130,246,0.7)] transition-all duration-600 focus:outline-none"
+            className="group relative overflow-hidden rounded-lg px-8 py-3 h-12 text-sm font-semibold bg-gradient-to-br from-blue-600 to-cyan-500 text-white shadow-lg focus:shadow-[0_0_25px_rgba(59,130,246,0.7)] transition-all duration-600 focus:outline-none"
           >
             <div className="relative z-10 flex items-center justify-between focus:animate-hologram">
               <span className="transition-all duration-600 group-focus:font-extrabold">Focus Me</span>
@@ -149,7 +149,7 @@ const Button29 = () => {
         <div className="flex flex-col items-center gap-4">
           <h1 className="text-lg font-bold text-gray-800 tracking-wider">Active Effect</h1>
           <button
-            className="group relative overflow-hidden rounded-xl px-8 py-3 h-12 text-sm font-semibold bg-rose-800 text-white shadow-lg transition-all duration-300"
+            className="group relative overflow-hidden rounded-xl px-8 py-3 h-12 text-sm font-semibold bg-gradient-to-br from-emerald-600 to-teal-500 text-white shadow-lg transition-all duration-300"
           >
             <div className="relative z-10 flex items-center justify-between">
               <span className="transition-all duration-300 group-active:tracking-tighter">Press Me</span>
@@ -190,7 +190,7 @@ const Button29 = () => {
         <div className="flex flex-col items-center gap-4">
           <h1 className="text-lg font-bold text-gray-800 tracking-wider">Animated</h1>
           <button
-            className="group relative overflow-hidden rounded-3xl px-8 py-3 h-12 text-sm font-semibold bg-purple-600 text-white shadow-lg"
+            className="group relative overflow-hidden rounded-3xl px-8 py-3 h-12 text-sm font-semibold bg-gradient-to-br from-rose-600 to-pink-600 text-white shadow-lg"
           >
             <div className="relative z-10 flex items-center justify-between animate-morph">
               <span className="transition-all duration-700">Animated</span>

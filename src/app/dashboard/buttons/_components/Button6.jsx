@@ -3,11 +3,11 @@ import React from 'react'
 const Button6 = () => {
     return (
         <div className="w-full p-8 bg-gray-50 rounded-xl">
-            <div className="flex flex-col md:flex-row justify-evenly w-full items-center gap-10">
+      <div className="flex flex-col md:flex-row justify-evenly w-full items-center gap-8">
                 {/* Hover Button */}
                 <div className="flex flex-col items-center gap-5">
                     <h1 className="text-lg font-medium text-gray-700">Hover Effect</h1>
-                    <button className="relative overflow-hidden bg-gradient-to-r from-blue-500 to-indigo-600 text-white h-12 px-8  font-medium shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300 hover:from-indigo-600 hover:to-blue-500 group">
+                    <button className="cursor-pointer relative overflow-hidden bg-gradient-to-br from-indigo-600 to-purple-600 text-white h-12 px-8  font-medium shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300 hover:from-indigo-600 hover:to-blue-500 group">
                         <span className="relative z-10">Hover Me</span>
                         <span className="absolute inset-0 bg-white opacity-0 group-hover:opacity-10 transition-opacity duration-300"></span>
                     </button>
@@ -16,7 +16,7 @@ const Button6 = () => {
                 {/* Focus Button */}
                 <div className="flex flex-col items-center gap-5">
                     <h1 className="text-lg font-medium text-gray-700">Focus Effect</h1>
-                    <button className="bg-gradient-to-r from-purple-500 to-pink-500 text-white h-12 px-8  font-medium shadow-lg transform transition-all duration-200 focus:outline-none focus:ring-4 focus:ring-purple-300 focus:scale-105">
+                    <button className="cursor-pointer bg-gradient-to-br from-blue-600 to-cyan-500 text-white h-12 px-8  font-medium shadow-lg transform transition-all duration-200 focus:outline-none focus:ring-4 focus:ring-purple-300 focus:scale-105">
                         Focus Me
                     </button>
                 </div>
@@ -24,7 +24,7 @@ const Button6 = () => {
                 {/* Active Button */}
                 <div className="flex flex-col items-center gap-5">
                     <h1 className="text-lg font-medium text-gray-700">Active Effect</h1>
-                    <button className="bg-gradient-to-r from-green-500 to-teal-500 text-white h-12 px-8  font-medium shadow-lg active:scale-95 active:shadow-md transition-transform duration-150">
+                    <button className="bg-gradient-to-br from-emerald-600 to-teal-500 text-white cursor-pointer h-12 px-8  font-medium shadow-lg active:scale-95 active:shadow-md transition-transform duration-150">
                         Press Me
                     </button>
                 </div>
@@ -43,7 +43,7 @@ const Button6 = () => {
                 {/* Animated Button */}
                 <div className="flex flex-col items-center gap-5">
                     <h1 className="text-lg font-medium text-gray-700">Animated</h1>
-                    <button className="relative overflow-hidden bg-gradient-to-r from-rose-500 to-amber-500 text-white h-12 px-8 font-medium shadow-lg hover:shadow-rose-300/30 animate-pulse hover:animate-none">
+                    <button className="relative overflow-hidden cursor-pointer bg-gradient-to-br from-rose-600 to-pink-600 text-white h-12 px-8 font-medium shadow-lg hover:shadow-rose-300/30 animate-pulse hover:animate-none">
                         <span className="relative z-10">Animated</span>
                         <span className="absolute top-0 left-0 w-full h-full bg-white opacity-0 hover:opacity-10 transition-opacity duration-300"></span>
                     </button>

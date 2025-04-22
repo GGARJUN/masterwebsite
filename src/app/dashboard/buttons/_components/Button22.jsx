@@ -56,7 +56,7 @@ const Button22 = () => {
         .animate-border-pulse { animation: border-pulse 2s ease-in-out infinite; }
       `}</style>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6">
+<div className="flex flex-col md:flex-row justify-evenly w-full items-center gap-8">
         {/* Hover Button - Elevation Effect */}
         <div className="flex flex-col items-center gap-3">
           <h2 className="text-sm font-medium text-gray-600 tracking-wider">HOVER EFFECT</h2>
@@ -78,7 +78,7 @@ const Button22 = () => {
             }}
           >
             <div className="relative z-10 flex items-center justify-center gap-2">
-              <span>Elevate</span>
+              <span>Hover Me</span>
               <ArrowRight className={`w-4 h-4 transition-transform ${states.hover ? 'translate-x-1' : ''}`} />
             </div>
             <div className={`
@@ -107,7 +107,7 @@ const Button22 = () => {
             }}
           >
             <div className="relative z-10 flex items-center justify-center gap-2">
-              <span>Illuminate</span>
+              <span>Focus Me</span>
               <Eye className={`w-4 h-4 transition-transform ${states.focus ? 'scale-110' : ''}`} />
             </div>
             <div className={`
@@ -136,7 +136,7 @@ const Button22 = () => {
             }}
           >
             <div className="relative z-10 flex items-center justify-center gap-2">
-              <span>Ripple</span>
+              <span>Press Me</span>
               <Zap className={`w-4 h-4 transition-transform ${states.active ? 'scale-125' : ''}`} />
             </div>
             {states.ripple.active && (
@@ -183,15 +183,14 @@ const Button22 = () => {
           <button
             className={`
               relative h-12 px-6 font-medium text-white 
-              shadow-lg overflow-hidden border-2 border-white/20
+              shadow-lg overflow-hidden border-2 border-white/20 bg-gradient-to-br from-rose-600 to-pink-600
             `}
             style={{
-              background: 'linear-gradient(45deg, #ec4899, #db2777, #ec4899)',
               backgroundSize: '200% auto'
             }}
           >
             <div className="relative z-10 flex items-center justify-center gap-2">
-              <span>Shimmer</span>
+              <span>Animated</span>
               <Sparkles className="w-4 h-4 animate-float" />
             </div>
             <div className="absolute inset-0 animate-shine"/>

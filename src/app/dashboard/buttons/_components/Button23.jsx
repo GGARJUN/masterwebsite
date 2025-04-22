@@ -66,12 +66,12 @@ const Button23 = () => {
         }
       `}</style>
 
-      <div className="flex flex-col md:flex-row flex-wrap justify-center w-full items-center gap-14">
+<div className="flex flex-col md:flex-row justify-evenly w-full items-center gap-8">
         {/* Glassmorphic Button */}
         <div className="flex flex-col items-center gap-4">
           <h1 className="text-lg font-medium text-gray-700">Hover Effect</h1>
           <button
-            className="group relative overflow-hidden rounded-xl px-6 py-3 h-12 text-sm font-medium bg-black/90 backdrop-blur-md border border-white/30 text-white shadow-lg hover:bg-white/30 transition-all duration-300"
+            className="group relative overflow-hidden rounded-xl px-6 py-3 h-12 text-sm font-medium bg-gradient-to-br from-indigo-600 to-purple-600 backdrop-blur-md border border-white/30 text-white shadow-lg hover:bg-white/30 transition-all duration-300"
           >
             <div className="relative z-10 flex items-center justify-center gap-2 group-hover:text-black">
               <span>Hover Me</span>
@@ -127,7 +127,7 @@ const Button23 = () => {
         <div className="flex flex-col items-center gap-4">
           <h1 className="text-lg font-medium text-gray-700">Floating Action</h1>
           <button
-            className="group relative rounded-full px-6 py-3 h-12 text-sm font-medium bg-purple-600 text-white shadow-xl hover:shadow-purple-600/40 transition-all duration-300 animate-float"
+            className="group relative rounded-full px-6 py-3 h-12 text-sm font-medium bg-gradient-to-br from-rose-600 to-pink-600 text-white shadow-xl hover:shadow-purple-600/40 transition-all duration-300 animate-float"
           >
             <div className="relative z-10 flex items-center justify-center gap-2">
               <span>Floating</span>

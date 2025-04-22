@@ -1,48 +1,61 @@
-"use client"
-import React, { useState } from 'react';
+"use client";
+import React, { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import { ChevronDown, ChevronUp, Menu, X } from 'lucide-react';
 
 const Header = () => {
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
     const [openDropdown, setOpenDropdown] = useState(null);
+    const dropdownRef = useRef(null);
 
     const navItems = [
+        { name: "Home", href: "/" },
         {
-            name: "Dashboard",
-            href: "/",
+          name: "Products",
+          href: "#",
+          subItems: [
+            { name: "All Products", href: "/" },
+            { name: "New Arrivals", href: "/" },
+            { name: "Best Sellers", href: "/" },
+            { name: "Categories", href: "/" },
+          ],
         },
         {
-            name: "Components",
-            href: "/",
-            subItems: [
-                { name: "Buttons", href: "/" },
-                { name: "Forms", href: "/" },
-                { name: "Cards", href: "/" },
-            ],
+          name: "Solutions",
+          href: "#",
+          subItems: [
+            { name: "Marketing", href: "/" },
+            { name: "Analytics", href: "/" },
+            { name: "Commerce", href: "/" },
+            { name: "Insights", href: "/" },
+          ],
         },
-        {
-            name: "Templates",
-            href: "/",
-            subItems: [
-                { name: "Landing Pages", href: "/" },
-                { name: "Dashboards", href: "/" },
-                { name: "E-commerce", href: "/" },
-            ],
-        },
-        {
-            name: "Settings",
-            href: "/",
-        },
+        { name: "Resources", href: "/" },
+        { name: "Pricing", href: "/" },
     ];
 
     const toggleDropdown = (itemName) => {
         setOpenDropdown(openDropdown === itemName ? null : itemName);
     };
 
+    // Close dropdown when clicking outside
+    useEffect(() => {
+        const handleClickOutside = (event) => {
+            if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+                setOpenDropdown(null);
+                setIsMobileMenuOpen(false);
+            }
+        };
+
+        document.addEventListener('mousedown', handleClickOutside);
+        return () => {
+            document.removeEventListener('mousedown', handleClickOutside);
+        };
+    }, []);
+
     return (
         <header className="bg-white shadow-sm sticky top-0 z-50">
-            <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8" ref={dropdownRef}>
                 <div className="flex justify-between h-16 items-center">
                     {/* Logo/Brand */}
                     <div className="flex items-center">
@@ -166,7 +179,7 @@ const Header = () => {
                 )}
             </nav>
         </header>
-    )
-}
+    );
+};
 
-export default Header
+export default Header;

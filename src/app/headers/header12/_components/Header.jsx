@@ -8,53 +8,29 @@ const Header = () => {
   const [openDropdown, setOpenDropdown] = useState(null);
 
   const navItems = [
+    { name: "Home", href: "/" },
     {
-      name: "Home",
-      href: "/",
+      name: "Products",
+      href: "#",
       subItems: [
-        { name: "Overview", href: "/" },
-        { name: "Features", href: "/" },
-        { name: "Pricing", href: "/" },
-      ],
-    },
-    {
-      name: "About",
-      href: "/about",
-    },
-    {
-      name: "Events",
-      href: "/events",
-      subItems: [
-        { name: "Upcoming Events", href: "/" },
-        { name: "Past Events", href: "/" },
-      ],
-    },
-    {
-      name: "Blogs",
-      href: "/blogs",
-      subItems: [
-        { name: "Latest Articles", href: "/" },
+        { name: "All Products", href: "/" },
+        { name: "New Arrivals", href: "/" },
+        { name: "Best Sellers", href: "/" },
         { name: "Categories", href: "/" },
       ],
     },
     {
-      name: "Pages",
-      href: "/pages",
+      name: "Solutions",
+      href: "#",
       subItems: [
-        { name: "FAQs", href: "/" },
-        { name: "Terms & Conditions", href: "/" },
-        { name: "Privacy Policy", href: "/" },
+        { name: "Marketing", href: "/" },
+        { name: "Analytics", href: "/" },
+        { name: "Commerce", href: "/" },
+        { name: "Insights", href: "/" },
       ],
     },
-    {
-      name: "Causes",
-      href: "/causes",
-      subItems: [
-        { name: "Disaster Relief", href: "/" },
-        { name: "Education", href: "/" },
-        { name: "Healthcare", href: "/" },
-      ],
-    },
+    { name: "Resources", href: "/" },
+    { name: "Pricing", href: "/" },
   ];
 
   const toggleDropdown = (itemName) => {

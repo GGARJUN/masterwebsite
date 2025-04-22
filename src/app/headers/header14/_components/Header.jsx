@@ -12,26 +12,27 @@ const Header = () => {
   const navItems = [
     { name: "Home", href: "/" },
     {
-      name: "Shop",
-      href: "/shop",
+      name: "Products",
+      href: "#",
       subItems: [
-        { name: "All Products", href: "/shop/all" },
-        { name: "New Arrivals", href: "/shop/new" },
-        { name: "Best Sellers", href: "/shop/bestsellers" },
-        { name: "Collections", href: "/shop/collections" },
+        { name: "All Products", href: "/" },
+        { name: "New Arrivals", href: "/" },
+        { name: "Best Sellers", href: "/" },
+        { name: "Categories", href: "/" },
       ],
     },
     {
-      name: "Discover",
-      href: "/discover",
+      name: "Solutions",
+      href: "#",
       subItems: [
-        { name: "Trending", href: "/discover/trending" },
-        { name: "Guides", href: "/discover/guides" },
-        { name: "Inspiration", href: "/discover/inspiration" },
+        { name: "Marketing", href: "/" },
+        { name: "Analytics", href: "/" },
+        { name: "Commerce", href: "/" },
+        { name: "Insights", href: "/" },
       ],
     },
-    { name: "About", href: "/about" },
-    { name: "Contact", href: "/contact" },
+    { name: "Resources", href: "/" },
+    { name: "Pricing", href: "/" },
   ];
 
   // Scroll effect
